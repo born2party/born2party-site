@@ -1481,6 +1481,8 @@ body[data-pg]:not([data-pg="inicio"]) main::before{content:"";display:block;heig
 @media (prefers-reduced-motion:reduce){.js-sg .sg,.js-sg .sg-panel,.js-sg .sg-panel *,.js-sg .sg-list>*,.js-sg .hero *{opacity:1!important;transform:none!important;clip-path:none!important;animation:none!important;transition:none!important}}
 @media (max-width:640px){.poster li:nth-child(n+6){display:none}.dep:nth-child(n+6){display:none}}
 .dep .s:empty{display:none}
+a.dep{color:inherit;text-decoration:none}a.dep:hover .p{text-decoration:underline}
+.poster li.lk{display:block}.poster li.lk>a{display:grid;grid-template-columns:auto 1fr;gap:2px 14px;align-items:baseline;color:inherit;text-decoration:none}.poster li.lk>a:hover .n{text-decoration:underline}
 
 /* ===== como garantir o desconto ===== */
 .how-h{margin:0;font-family:var(--f-display);font-weight:900;text-transform:uppercase;font-size:clamp(2rem,4.6vw,3.8rem);line-height:.9}
@@ -3080,13 +3082,14 @@ contagem();setInterval(contagem,30000);
  const falta=iso=>{const n=daysTo(iso);return n>0?`<b>${n}</b><span>${n===1?L("dia pra começar","day to go"):L("dias pra começar","days to go")}</span>`:""};
  /* carnario */
  const C=ATIVAS.filter(f=>f.tipo.includes("carnaval")&&f.dest==="rio"&&f.data).sort((a,b)=>a.data.localeCompare(b.data)||(a.camarote?1:0)-(b.camarote?1:0));
+ const compraUrl=f=>{if(f.site)return f.site;if(f.noites&&f.noites.length){const n=f.noites.find(x=>x[0]==="31.12")||f.noites[0];return n[2]}return""};
  if($("#ctPoster")){
   $("#ctWhen").textContent=L("Rio, São Paulo, Salvador e BH · 4 a 13 de fevereiro","Rio, São Paulo, Salvador & BH · February 4–13");
   $("#ctLede").textContent=L("Blocos, bailes, camarotes e desfiles nas quatro maiores festas do país. Do pré-carnaval ao Desfile das Campeãs no sábado, 13/02, a B2P te diz onde ir e garante o desconto.","Street parties, balls, VIP boxes and parades across Brazil's four biggest carnivals. From pre-carnival to the Champions' Parade on Saturday, Feb 13, B2P tells you where to go and gets you the discount.");
   $("#ctCount").innerHTML=falta("2027-02-04").replace(L("dias pra começar","days to go"),L("dias pro Carnaval","days to Carnival")).replace(L("dia pra começar","day to go"),L("dia pro Carnaval","day to Carnival"));
-  $("#ctTag").textContent=L("Destaque B2P · Rio de Janeiro","B2P highlight · Rio de Janeiro");
-  $("#ctSub").textContent=L("Nossa seleção do Carnaval do Rio: os bailes e camarotes que valem a pena, com cupom B2P.","Our pick of Rio Carnival: the balls and VIP boxes worth it, with the B2P code.");
-  $("#ctPoster").innerHTML=C.slice(0,8).map((f,i)=>{const d=parse(f.data);return`<li style="--i:${i}"><span class="d"><small>${dw(d)}</small>${dd(d)}</span><span class="n">${f.nome}</span><span class="k">${f.camarote?L("Camarote","VIP box"):f.cupom?L("Cupom B2P","B2P code"):f.pre?L("Pré-venda "+f.pre,"Presale "+f.pre):L("Em breve","Soon")}</span></li>`}).join("");
+  $("#ctTag").textContent="Rio de Janeiro";
+  $("#ctSub").textContent=L("Bailes, blocos e camarotes do Carnaval do Rio, com cupom B2P.","Balls, blocos and VIP boxes at Rio Carnival, with the B2P code.");
+  $("#ctPoster").innerHTML=C.slice(0,8).map((f,i)=>{const d=parse(f.data),u=compraUrl(f);const inn=`<span class="d"><small>${dw(d)}</small>${dd(d)}</span><span class="n">${f.nome}</span><span class="k">${f.camarote?L("Camarote","VIP box"):f.cupom?L("Cupom B2P","B2P code"):f.pre?L("Pré-venda "+f.pre,"Presale "+f.pre):L("Em breve","Soon")}</span>`;return u?`<li class="lk" style="--i:${i}"><a href="${u}" ${ext}>${inn}</a></li>`:`<li style="--i:${i}">${inn}</li>`}).join("");
   $("#ctCta").textContent=L(`Ver as ${C.length} festas do Carnario`,`See all ${C.length} Carnario parties`);
   const CI=[["rio","Rio de Janeiro",L("Carnario, camarotes, blocos e Sapucaí","Carnario, VIP boxes, blocos and Sapucaí")],["sp","São Paulo",L("Blocos de rua e festas","Street blocos and parties")],["ssa","Salvador",L("Circuitos, trios e camarotes","Circuits, trios and VIP boxes")],["bh","Belo Horizonte",L("Blocos que tomam a cidade","Blocos taking over the city")]];
   $("#ctCities").innerHTML=CI.map(([id,n,t],i)=>`<li style="--i:${i}"><a href="#carnaval-${id}"><b>${n}</b><span>${t}</span></a></li>`).join("");
@@ -3101,7 +3104,7 @@ contagem();setInterval(contagem,30000);
   $("#rtLede").textContent=L("Praia, vila rústica ou festa gigante: as viradas mais disputadas do Brasil e de Punta, com desconto B2P. Os lotes sobem rápido, quem decide antes paga menos.","Beach, rustic village or a huge party: the most wanted New Year's parties in Brazil and Punta, with a B2P discount. Prices rise fast, so deciding early pays off.");
   $("#rtCount").innerHTML=falta("2026-12-31").replace(L("dias pra começar","days to go"),L("dias pra virada","days to NYE")).replace(L("dia pra começar","day to go"),L("dia pra virada","day to NYE"));
   const pick=[];const vistos=new Set();R.forEach(f=>{const c=cid(f);if(!vistos.has(c)&&pick.length<7){vistos.add(c);pick.push(f)}});
-  $("#rtBoard").innerHTML=pick.map((f,i)=>`<div class="dep" role="listitem" style="--i:${i}"><span class="c">${cid(f)}</span><span class="p">${f.nome}</span><span class="s g">${(f.local||"").split(" · ")[1]||f.uf||""}</span></div>`).join("");
+  $("#rtBoard").innerHTML=pick.map((f,i)=>{const u=compraUrl(f);const inn=`<span class="c">${cid(f)}</span><span class="p">${f.nome}</span><span class="s g">${(f.local||"").split(" · ")[1]||f.uf||""}</span>`;return u?`<a class="dep" role="listitem" style="--i:${i}" href="${u}" ${ext}>${inn}</a>`:`<div class="dep" role="listitem" style="--i:${i}">${inn}</div>`}).join("");
   $("#rtCta").textContent=L("Ver o mapa da virada","See the NYE map");
   $("#rtMore").innerHTML=L(`Mais ${Math.max(0,cidades.length-pick.length)} destinos no mapa, cada um com o seu grupo.`,`${Math.max(0,cidades.length-pick.length)} more destinations on the map, each with its own group.`);
  }
