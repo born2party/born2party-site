@@ -1618,6 +1618,9 @@ body{transition:background-color .2s linear}
 .grp-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 42%;display:block}
 .grp-photo figcaption{position:absolute;left:0;right:0;bottom:0;padding:60px clamp(18px,3vw,32px) clamp(16px,2.4vw,26px);background:linear-gradient(transparent,rgba(5,4,7,.85));font-family:var(--f-display);font-weight:900;text-transform:uppercase;font-size:clamp(1.5rem,3.4vw,2.8rem);line-height:.95}
 @media (max-width:700px){.grp-photo{aspect-ratio:4/3}}
+.top>.hd-lang{order:0;flex:0 0 auto;margin-left:0!important}
+@media (max-width:480px){.top{column-gap:8px!important}.hd-ag{font-size:12px!important;padding:8px 11px!important;gap:6px!important}.top>.hd-lang button{padding:5px 6px!important;font-size:10px!important;min-width:0!important}.top{column-gap:6px!important}.menu-btn{padding:7px 10px!important;font-size:12px!important;gap:6px!important}}
+@media (max-width:374px){.top .menu-btn .mb-l{display:none!important}.top .menu-btn{padding:9px 11px!important}}
 </style>
 
 <header class="top">
@@ -1629,13 +1632,13 @@ body{transition:background-color .2s linear}
     <div class="results" id="results" hidden></div>
   </form>
   <a class="hd-ag" href="#agenda" id="hdAg">Agenda</a>
+  <div class="lang hd-lang" role="group" aria-label="Idioma / Language"><button type="button" data-l="pt">PT</button><button type="button" data-l="en">EN</button></div>
   <button type="button" class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuP"><span class="mb-l">Menu</span><span class="mb-i" aria-hidden="true"><i></i><i></i></span></button>
   <div class="menu-p" id="menuP" hidden>
   <nav aria-label="Seções">
-    <a href="#agenda">Agenda</a><a href="#reveillon">Réveillon 2027</a><a href="#carnaval">Carnaval 2027</a><a href="#grupos">Grupos</a><a href="#ajuda">Ajuda</a>
+    <a href="#inicio">Página principal</a><a href="#agenda">Festas</a><a href="#reveillon">Réveillon 2027</a><a href="#carnaval">Carnaval 2027</a><a href="#grupos">Grupos</a><a href="#ajuda">Ajuda</a>
   </nav>
   <div class="menu-sec"><a class="mw" style="--c:#F2C200" href="#universitarias">Universitárias</a><a class="mw" style="--c:#FF5A5F" href="#festivais">Shows e festivais</a><a class="mw" style="--c:#A8E063" href="#wellness">Wellness</a><a href="#role">Tá em dúvida de qual festa ir?</a><a href="#parceiros">Festas que vendemos</a><a href="#fale">Fale conosco</a></div>
-  <div class="lang" role="group" aria-label="Idioma / Language"><button type="button" data-l="pt">PT</button><button type="button" data-l="en">EN</button></div>
   <a class="cta" href="#festas">Encontre uma festa <span aria-hidden="true">→</span></a>
   </div>
 </header>
@@ -1783,8 +1786,7 @@ body{transition:background-color .2s linear}
         <div class="rev-head-r">
           <p class="rev-lede">Toque no mapa pra ver as festas e o grupo de cada destino.</p>
           <div class="sp-ctas">
-            <a class="sp-btn" href="https://chat.whatsapp.com/KJYmHWpRVkl4TJRPrB0Oss?mode=gi_t" target="_blank" rel="noopener">Pré-venda Réveillon 27</a>
-            <a class="sp-btn ghost" href="https://chat.whatsapp.com/KHyHRBiWNOq4rH5nc0HiUA" target="_blank" rel="noopener">Grupo Réveillon</a>
+            <a class="sp-btn" href="https://chat.whatsapp.com/KHyHRBiWNOq4rH5nc0HiUA" target="_blank" rel="noopener">Grupo Réveillon</a>
           </div>
         </div>
       </div>
@@ -2001,7 +2003,7 @@ const STATIC_EN=[
  ['#produtores h2','Sell your<br>party with<br><span>B2P</span>'],
  ['#pwa2 .mono',"Business WhatsApp"],['#pcopy',"Copy e-mail"],
  ['.foot .row > span:first-child',"Tickets are sold on each party's ticketing site."],
- ['#menuP a[href="#inicio"]',"Home"],['#menuP a[href="#agenda"]',"Calendar"],['#menuP a[href="#reveillon"]',"New Year's 2027"],['#menuP a[href="#carnaval"]',"Carnival 2027"],['#menuP a[href="#universitarias"]',"College"],['#menuP a[href="#festivais"]',"Shows & festivals"],['#menuP a[href="#grupos"]',"Groups"],['#menuP a[href="#role"]',"Not sure which party?"],['#menuP a[href="#ajuda"]',"Help"],['#menuP a[href="#parceiros"]',"Parties we sell"],['#menuP a[href="#fale"]',"Contact"]
+ ['#menuP a[href="#inicio"]',"Home"],['#menuP a[href="#agenda"]',"Parties"],['#menuP a[href="#reveillon"]',"New Year's 2027"],['#menuP a[href="#carnaval"]',"Carnival 2027"],['#menuP a[href="#universitarias"]',"College"],['#menuP a[href="#festivais"]',"Shows & festivals"],['#menuP a[href="#grupos"]',"Groups"],['#menuP a[href="#role"]',"Not sure which party?"],['#menuP a[href="#ajuda"]',"Help"],['#menuP a[href="#parceiros"]',"Parties we sell"],['#menuP a[href="#fale"]',"Contact"]
 ];
 const PH_EN={"q":"Search by state or party name","rv-nome":"E.g.: Ju, from BH","rv-festa":"E.g.: Réveillon Saudade","rv-texto":"Tell us about your experience with B2P"};
 /* idioma: PT ou EN (gringos do Carnario). Escolha salva no navegador; padrão segue o idioma do aparelho */
@@ -2039,7 +2041,7 @@ const FESTAS=[
  /* ---- réveillon 2027 ---- */
  {nome:"Tantra Rosa",local:"Praia do Rosa · SC",dest:"sc",tipo:["reveillon"],data:"2026-12-28",fim:"02.01",cupom:"",linkB2P:true,cena:"sc-praia",
   site:"https://www.sympla.com.br/pacote-eventos-reveillon-tantrarosa-2027--28-de-dezembro-a-02-de-janeiro__3396225?afid=110928",siteLbl:L("Pacote com desconto","Discounted package"),
-  extra:{lbl:"Camarotes e informações",url:"https://wa.link/ajffpc"},grupo:W+"Gx7IoSEyDwZFHzJCPTXgJV?mode=gi_t",
+  extra:{lbl:"Camarotes e informações",url:"https://wa.link/ajffpc"},grupo:W+"Ic0SNIp5lTxDtIarWyWIBD?mode=gi_t",
   noites:[["28.12","Abertura Tantra Rosa","https://www.sympla.com.br/abertura-reveillon-tantrarosa-2027--2812__3396005?afid=110997"],
           ["29.12","Baile da Favorita","https://www.sympla.com.br/baile-da-favorita--tantrarosa-2027--2912__3396204?afid=111017"],
           ["30.12","Magic Tulum","https://www.sympla.com.br/magic-tulum--tantrarosa-2027--3012__3396206?afid=110929"],
@@ -2063,7 +2065,7 @@ const FESTAS=[
  {nome:"Réveillon Amoré",uf:"PE",local:"Maracaípe · Porto de Galinhas",dest:"nordeste",tipo:["reveillon"],data:"2026-12-31",cupom:"B2P",cena:"sc-reveillon",
   site:"https://www.sympla.com.br/evento/reveillon-amore-2027/3390641?d=B2P",grupo:W+"IoZMcFkjZy9HfCuLXNFeGW?mode=gi_t"},
  {nome:"Simbó Preá",uf:"CE",local:"Preá · Ceará",dest:"nordeste",tipo:["reveillon"],data:"2026-12-31",cupom:"B2P",cena:"sc-praia",
-  site:ING+"321771ba-6b06-4afd-89d3-a6cedd31ac51/tickets?coupon=B2P",grupo:W+"H1Ji9dmkDyMH5zdeaO9gwH?s=cl&p=i&mlu=4&ilr=4"},
+  site:ING+"321771ba-6b06-4afd-89d3-a6cedd31ac51/tickets?coupon=B2P",grupo:W+"ED0u3hsTkFO3Z0alNq7ldL?mode=gi_t"},
  {nome:"Réveillon Destino",local:L("Itacimirim · Bahia · pacotes","Itacimirim · Bahia · packages"),dest:"bahia",tipo:["reveillon"],data:"2026-12-31",cupom:"B2P",cena:"sc-reveillon",
   site:"https://ticketmaker.queue-fair.net/ticketmakerdestinopacotes?target=https%3A%2F%2Fvendas.ticketmaker.com.br%2Fevento%2Freveillon-destino-2027-pacotes%2F6888-812%2FB2P",
   pix:"https://vendas.ticketmaker.com.br/evento/reveillon-destino-2027-pacote-pix-sem-taxa/6889-812/B2P",grupo:W+"FfHvuTSMTLy1gM8LcBRI7V?mode=gi_t"},
@@ -2113,10 +2115,10 @@ const RADAR=[
 ];
 /* grupos de réveillon por região */
 const REV=[
- ["Nordeste",[["Arcanjos","CJGo1KmxuyYFecirEzAt2O?mode=gi_t"],["Pipa","FsishVdcN1s1G1SaooXcYl?mode=gi_t"],["Milagres","DlNPrveVjS8B3FV1RYJcA6?mode=gi_t"],["Mil Sorrisos","CFRNr8xXpiVLYKxWiMJFu9?s=cl&p=i&mlu=4&ilr=4"],["Amoré","IoZMcFkjZy9HfCuLXNFeGW?mode=gi_t"],["Saudade","IwnjgvTjBneLZL4duZdth9?s=cl&p=i&ilr=4"],["Simbó Preá","H1Ji9dmkDyMH5zdeaO9gwH?s=cl&p=i&mlu=4&ilr=4"],["Carneiros","FUcUpKsu5uhEiu59lYVFKw"],["Preá","ED0u3hsTkFO3Z0alNq7ldL?mode=gi_t"]]],
+ ["Nordeste",[["Arcanjos","CJGo1KmxuyYFecirEzAt2O?mode=gi_t"],["Pipa","FsishVdcN1s1G1SaooXcYl?mode=gi_t"],["Milagres","DlNPrveVjS8B3FV1RYJcA6?mode=gi_t"],["Mil Sorrisos","CFRNr8xXpiVLYKxWiMJFu9?s=cl&p=i&mlu=4&ilr=4"],["Amoré","IoZMcFkjZy9HfCuLXNFeGW?mode=gi_t"],["Saudade","IwnjgvTjBneLZL4duZdth9?s=cl&p=i&ilr=4"],["Carneiros","FUcUpKsu5uhEiu59lYVFKw"],["Preá · Simbó","ED0u3hsTkFO3Z0alNq7ldL?mode=gi_t"]]],
  ["Bahia",[["Destino · Itacimirim","FfHvuTSMTLy1gM8LcBRI7V?mode=gi_t"],["Boipeba","JL79ttg3gMtLMN58ZeGT0r?mode=gi_t"],["Caraíva","H0AnPv99NeEFmh2FIulljY"],["Sal de Caraíva","C8A2y3FVjFhElyOzLk5zqG?s=cl&p=i&ilr=0"],["Trancoso","I8VX6vvHLkI5rtC7dT5fKS"]]],
  ["Rio e São Paulo",[["Rio / Búzios","KXfPAIJvOl4GJsC482Uox9?s=cl&p=i&mlu=4&ilr=4"],["Litoral Norte · Araxás","KH7pho2hZsdLQVGMivqHeK?mode=gi_t"],["Ilhabela","KRvW8gP0asS1gZZCCQKMaC?mode=r_c"],["Litoral Sul","CbhdG0iWwKVLXGI8dRiFkt?mode=gi_t"],["Litoral Norte","JSIqDL9OrolEWqW97G5bVl"]]],
- ["Santa Catarina",[["Tantra Rosa","Gx7IoSEyDwZFHzJCPTXgJV?mode=gi_t"],["Praia do Rosa · Virada Mágica","Ic0SNIp5lTxDtIarWyWIBD?mode=gi_t"]]],
+ ["Santa Catarina",[["Praia do Rosa · Tantra Rosa e Virada Mágica","Ic0SNIp5lTxDtIarWyWIBD?mode=gi_t"]]],
  ["Fora do Brasil",[["Punta del Este","Lc4dM42rpwCFv2vVgCqQpf?mode=gi_t"]]]
 ];
 /* demais comunidades: [nome, código do convite] */
@@ -2498,7 +2500,7 @@ $("#more").addEventListener("click",e=>{if(e.target.closest("#moreBtn")){showAll
   document.querySelectorAll("#revMap .pin").forEach(p=>p.classList.toggle("sel",p.dataset.c===c));
   document.querySelectorAll("#revMap .st").forEach(s=>s.classList.toggle("on",s.dataset.uf===ufDe(c)));
   $("#revList").innerHTML=d.f.map(f=>{const url=f.site||(f.noites&&f.noites[0]&&f.noites[0][2]);return`<li><a href="${url}" ${ext}><strong>${f.nome}</strong><small>${f.local}</small><span class="c">${f.cupom?L("Cupom ","Code ")+f.cupom:L("Desconto no link","Discount in link")} →</span></a></li>`}).join("")||`<li><small style="color:var(--muted)">${L("Festas com desconto em breve. Entre no grupo pra saber primeiro.","Discounted parties coming soon. Join the group to hear first.")}</small></li>`;
-  $("#revGroups").innerHTML=d.g.map(([n,code])=>`<a class="grp" href="${W}${code}" ${ext}>${n}<span class="go">${L("Entrar","Join")}</span></a>`).join("")||`<a class="grp" href="${W}KJYmHWpRVkl4TJRPrB0Oss?mode=gi_t" ${ext}>Pré-venda Réveillon 27<span class="go">Entrar</span></a>`;
+  $("#revGroups").innerHTML=d.g.map(([n,code])=>`<a class="grp" href="${W}${code}" ${ext}>${n}<span class="go">${L("Entrar","Join")}</span></a>`).join("")||`<a class="grp" href="${W}KHyHRBiWNOq4rH5nc0HiUA" ${ext}>${L("Grupo Réveillon","New Year's group")}<span class="go">${L("Entrar","Join")}</span></a>`;
  }
  const inicial=nomes.find(c=>CID[c].f.length)||nomes[0];
  if(inicial){sel.value=inicial;cidade(inicial)}
