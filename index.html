@@ -1481,6 +1481,25 @@ body[data-pg]:not([data-pg="inicio"]) main::before{content:"";display:block;heig
 @media (prefers-reduced-motion:reduce){.js-sg .sg,.js-sg .sg-panel,.js-sg .sg-panel *,.js-sg .sg-list>*,.js-sg .hero *{opacity:1!important;transform:none!important;clip-path:none!important;animation:none!important;transition:none!important}}
 @media (max-width:640px){.poster li:nth-child(n+6){display:none}.dep:nth-child(n+6){display:none}}
 .dep .s:empty{display:none}
+@media (max-width:640px){#rtBoard .dep:nth-child(n+6){display:grid}}
+@media (max-width:480px){.tz-rev .tz-cta{font-size:.95rem;padding:13px 18px}}
+.tz-rev .tz-cta.tz-cta2{text-align:center;background:transparent;color:#17131c;border:1.5px solid #17131c}
+.rev-all{border-top:1px solid var(--edge);margin-top:clamp(28px,4vw,48px);padding-top:clamp(22px,3vw,34px);position:relative}
+.rev-all h3{font-family:var(--f-display);font-weight:900;text-transform:uppercase;font-size:clamp(1.8rem,4vw,3rem);line-height:.95;margin:0 0 8px}
+.rev-all>p{margin:0 0 22px;color:var(--muted)}
+.ra-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,330px),1fr));gap:30px 44px}
+.ra-city h4{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin:0;padding-bottom:8px;border-bottom:2px solid currentColor;font-family:var(--f-display);font-weight:900;text-transform:uppercase;font-size:1.5rem;line-height:1}
+.ra-city h4 small{font-family:var(--f-body);font-weight:600;font-size:12px;text-transform:none;opacity:.6}
+.ra-list{list-style:none;margin:0;padding:0}
+.ra-list>li{padding:13px 0;border-bottom:1px solid var(--edge)}
+.ra-h strong{display:block;font-family:var(--f-display);font-weight:800;text-transform:uppercase;font-size:1.15rem;line-height:1.05}
+.ra-h span{font-size:12.5px;opacity:.7}
+.ra-links{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}
+.ra-links a{display:inline-flex;align-items:center;text-decoration:none;color:inherit;border:1px solid rgba(245,244,248,.28);border-radius:999px;padding:6px 12px;font-size:13px;line-height:1.2;transition:border-color .2s}
+.ra-links a:hover{border-color:currentColor}
+.ra-links a.pk{background:var(--white);color:var(--black);border-color:var(--white);font-weight:600}
+.ra-g{display:flex;flex-direction:column;gap:4px;margin-top:10px}.ra-g a{font-size:13px;color:inherit;opacity:.75}.ra-g a:hover{opacity:1}
+.rev-list li.rl-multi{padding:10px 0}.rl-h strong{display:block;font-family:var(--f-display);font-weight:800;text-transform:uppercase}.rl-h small{opacity:.7}
 a.dep,.dep a{color:inherit;text-decoration:none}.dep.multi a:hover{text-decoration:underline}.dep .p .sep{opacity:.5}a.dep:hover .p{text-decoration:underline}
 .poster li.lk{display:block}.poster li.lk>a{display:grid;grid-template-columns:auto 1fr;gap:2px 14px;align-items:baseline;color:inherit;text-decoration:none}.poster li.lk>a:hover .n{text-decoration:underline}
 
@@ -1805,6 +1824,11 @@ body{transition:background-color .2s linear}
           </div>
         </div>
       </div>
+      <div class="rev-all" id="todos-reveillons">
+        <h3 id="raH">Todos os réveillons</h3>
+        <p id="raLede">Cada destino com as festas, os dias e os links com desconto.</p>
+        <div class="ra-grid" id="revAll"></div>
+      </div>
       <div class="quiz" id="quiz">
         <div class="quiz-intro"><p class="ag-h mono" data-q="eyebrow">Teste rápido</p><h3 data-q="title">Qual Réveillon combina com você?</h3><p data-q="sub">3 perguntas e a gente te mostra os destinos com a sua cara.</p><button type="button" class="sp-btn" id="quizGo" data-q="go">Fazer o teste →</button></div>
         <div class="quiz-body" id="quizBody" hidden></div>
@@ -2030,12 +2054,17 @@ const FESTAS=[
  {nome:"SIBC",local:"São Paulo",dest:"sp",tipo:["agenda"],data:"2026-10-17",cupom:"B2P",cena:"sc-night",site:"https://zig.tickets/eventos/sibc-em-sp-outubro-2026?cupom=B2P"},
  {nome:"Vertigo",local:"São Paulo",dest:"sp",tipo:["agenda"],data:"2026-10-17",cupom:"B2P",cena:"sc-night",site:"https://embedstore.ingresse.com/tickets/www.ingresse.com/event/107302?passkey=B2P"},
  {nome:"Monte Carlo",local:"São Paulo · Luxury Never Fades",dest:"sp",tipo:["universitaria"],data:"2026-10-23",cupom:"",cena:"sc-uni",site:"https://blacktag.com.br/eventos/33265/monte-carlo-luxury-never-fades?aff=B2P",grupo:W+"JrHGtucCwpvIZyIWOaplfz?mode=gi_t"},
+ {nome:"Quinta Funk",local:"São Paulo · Just Dance",dest:"sp",tipo:["universitaria"],data:"2026-11-05",cupom:"",cena:"sc-uni",site:"https://blacktag.com.br/eventos/33269/quintafunk-just-dance?aff=B2P",grupo:W+"JrHGtucCwpvIZyIWOaplfz?mode=gi_t"},
  {nome:"5521 SP",local:"São Paulo · Sunset",dest:"sp",tipo:["agenda"],data:"2026-10-24",cupom:"B2P",cena:"sc-night",site:"https://www.sympla.com.br/evento/sunset-5521-sp/3587979?d=B2P"},
  {nome:"Blackcaviar",local:"São Paulo",dest:"sp",tipo:["agenda"],data:"2026-10-24",cupom:"",linkB2P:true,cena:"sc-night",site:"https://gdya.dance/blackcaviar-2410-02e4?link=B2P"},
  {nome:"Pagode do Chuvisco",local:"São Paulo",dest:"sp",tipo:["agenda"],data:"2026-11-14",cupom:"B2P",cena:"sc-night",site:"https://embedstore.ingresse.com/tickets/www.ingresse.com/event/108484?passkey=B2P"},
+ {nome:"Evol",local:"São Paulo",dest:"sp",tipo:["agenda"],data:"2026-10-31",cupom:"B2P",cena:"sc-night",site:ING+"fae37757-820d-4d20-b436-158d8b5bee7b/tickets?coupon=B2P"},
+ {nome:"Maracutaia com Léo Foguete",local:"São Paulo",dest:"sp",tipo:["agenda"],data:"2026-11-06",cupom:"",linkB2P:true,cena:"sc-night",site:"https://gdya.dance/maracutaia-com-leo-foguete-af30?link=b2p"},
+ {nome:"Baile do Addam",local:"São Paulo",dest:"sp",tipo:["agenda"],data:"2026-11-07",cupom:"B2P",cena:"sc-night",site:ING+"ff967505-aa71-400e-94d5-97e625ae0aa2/tickets?passkey=B2P"},
  {nome:"Paquera · 9ª edição",local:"São Paulo",dest:"sp",tipo:["agenda"],data:"2026-11-21",cupom:"b2b",cena:"sc-night",site:"https://zig.tickets/eventos/festa-paquera-9-edicao?cupom=b2b"},
  {nome:"Pode Chegar · 1 ano",local:"São Paulo",dest:"sp",tipo:["agenda"],data:"2026-10-24",cupom:"",linkB2P:true,cena:"sc-night",site:"https://gdya.dance/pode-chegar-edicao-1-ano-f433?link=b2p"},
  {nome:"Bota Fora",local:L("São Paulo · compra pelo WhatsApp","São Paulo · buy via WhatsApp"),dest:"sp",tipo:["agenda"],data:"2026-11-06",cupom:"",linkB2P:true,cena:"sc-night",site:"https://wa.link/axc84h",siteLbl:L("Comprar pelo WhatsApp","Buy via WhatsApp")},
+ {nome:"Balbvrdia RJ",local:"Rio de Janeiro · Dark Nights",dest:"rio",tipo:["agenda"],data:"2026-10-31",cupom:"B2P",cena:"sc-night",site:"https://www.sympla.com.br/evento/balbvrdia-apresenta-dark-nights/3598743?d=B2P"},
  {nome:"Colosseo",local:"Rio de Janeiro",dest:"rio",tipo:["agenda"],data:"2026-11-20",cupom:"B2P",cena:"sc-night",site:ING+"58b5b2e9-6cc3-46d0-afef-51467d67b980/tickets?passkey=B2P"},
  {nome:"Baile do Momo",local:"Rio de Janeiro",dest:"rio",tipo:["agenda"],data:"2026-11-21",cupom:"B2P",cena:"sc-carnaval",site:ING+"5527ecbb-76e6-4e2c-b92b-d026895dfc7a/tickets?coupon=B2P"},
  /* ---- réveillon 2027 ---- */
@@ -2045,13 +2074,13 @@ const FESTAS=[
   noites:[["28.12","Abertura Tantra Rosa","https://www.sympla.com.br/abertura-reveillon-tantrarosa-2027--2812__3396005?afid=110997"],
           ["29.12","Baile da Favorita","https://www.sympla.com.br/baile-da-favorita--tantrarosa-2027--2912__3396204?afid=111017"],
           ["30.12","Magic Tulum","https://www.sympla.com.br/magic-tulum--tantrarosa-2027--3012__3396206?afid=110929"],
-          ["31.12","Réveillon Unity · open bar","https://www.sympla.com.br/reveillon-tantrarosa-2027---unity--open-bar--3112__3396211?afid=110930"],
+          ["31.12","Réveillon Unity","https://www.sympla.com.br/reveillon-tantrarosa-2027---unity--open-bar--3112__3396211?afid=110930"],
           ["02.01","Unity 02","https://www.sympla.com.br/unity-02--0201__3397868?afid=110996"]]},
  {nome:"Virada Mágica",local:L("Praia do Rosa · SC · 3 noites","Praia do Rosa · SC · 3 nights"),dest:"sc",tipo:["reveillon"],data:"2026-12-28",fim:"31.12",cupom:"b2p",cena:"sc-reveillon",
   grupo:W+"Ic0SNIp5lTxDtIarWyWIBD?mode=gi_t",
   noites:[["28.12","Maram Beach Garden","https://www.blueticket.com.br/evento/41296?c=b2p"],
-          ["29.12","Néctar Sunset · open bar","https://www.blueticket.com.br/evento/41216?c=b2p"],
-          ["31.12","Réveillon · open bar + open food","https://www.blueticket.com.br/evento/41215?c=b2p"]]},
+          ["29.12","Néctar Sunset","https://www.blueticket.com.br/evento/41216?c=b2p"],
+          ["31.12","Réveillon","https://www.blueticket.com.br/evento/41215?c=b2p"]]},
  {nome:"Réveillon Saudade",uf:"CE",local:"Cumbuco · Ceará",dest:"nordeste",tipo:["reveillon"],data:"2026-12-31",cupom:"B2P10",cena:"sc-praia",
   site:"https://www.meubilhete.com.br/reveillon-saudade?cupom=B2P10"},
  {nome:"Réveillon Arcanjos",uf:"AL",local:"Barra de São Miguel · AL",dest:"nordeste",tipo:["reveillon"],data:"2026-12-27",fim:"02.01",cupom:"B2P",cena:"sc-praia",
@@ -2079,6 +2108,8 @@ const FESTAS=[
   site:ING+"66331616-1b53-4c01-9dca-0d926263538c/tickets?coupon=B2P",grupo:W+"KXfPAIJvOl4GJsC482Uox9?s=cl&p=i&mlu=4&ilr=4"},
  {nome:"A Villa Réveillon",local:"Búzios · RJ",dest:"rio",tipo:["reveillon"],data:"2026-12-31",cupom:"B2P",cena:"sc-reveillon",
   site:ING+"029dbce6-7bb3-4559-93d7-27782882485d?passkey=B2P",grupo:W+"KXfPAIJvOl4GJsC482Uox9?s=cl&p=i&mlu=4&ilr=4"},
+ {nome:"Réveillon Privilége",local:"Búzios · RJ",dest:"rio",tipo:["reveillon"],data:"2026-12-31",cupom:"B2P",cena:"sc-reveillon",
+  site:"https://embedstore.ingresse.com/tickets/www.ingresse.com/event/103695?passkey=B2P",grupo:W+"KXfPAIJvOl4GJsC482Uox9?s=cl&p=i&mlu=4&ilr=4"},
  {nome:"Réveillon Araxás",local:"Litoral Norte · SP",dest:"sp",tipo:["reveillon"],data:"2026-12-31",cupom:"B2P",cena:"sc-reveillon",
   site:ING+"f95a273a-5c4c-4591-abe5-9444b196ac6a/tickets?coupon=B2P",pix:"https://wa.link/a43q3s",grupo:W+"KH7pho2hZsdLQVGMivqHeK?mode=gi_t"},
  {nome:"Réveillon Seu Vidal",local:"Rio de Janeiro",dest:"rio",tipo:["reveillon"],data:"2026-12-31",cupom:"B2P",cena:"sc-reveillon",
@@ -2092,8 +2123,8 @@ const FESTAS=[
   site:ING+"dbe4e07d-d554-4228-88f9-af473ee4ddef/tickets?passkey=B2P",grupo:W+"K4ZjEy7pSzQ0ZkyK3eXRnJ?s=cl&p=i&mlu=4&ilr=4"},
  {nome:"Baile do Momo",local:"Carnario · Rio de Janeiro",dest:"rio",tipo:["carnaval"],data:"2027-02-07",cupom:"B2P",cena:"sc-carnaval",
   site:ING+"cc9d0199-fc0a-458e-9e14-2e5a903d7b52/tickets?cod=B2P",grupo:W+"K4ZjEy7pSzQ0ZkyK3eXRnJ?s=cl&p=i&mlu=4&ilr=4"},
- {nome:"Majestique",local:"Carnario · Rio de Janeiro",dest:"rio",tipo:["carnaval"],data:"2027-02-08",cupom:"",pre:"07.10",cena:"sc-carnaval",
-  site:"https://wa.link/x4rtt9",siteLbl:"Condições para aniversariantes",siteEn:"Birthday deals",grupo:W+"K4ZjEy7pSzQ0ZkyK3eXRnJ?s=cl&p=i&mlu=4&ilr=4"},
+ {nome:"Majestique",local:"Carnario · Rio de Janeiro",dest:"rio",tipo:["carnaval"],data:"2027-02-08",cupom:"B2P",cena:"sc-carnaval",
+  site:"https://www.sympla.com.br/evento/majestique/3602787?d=B2P",extra:{lbl:"Condições para aniversariantes",en:"Birthday deals",url:"https://wa.link/x4rtt9"},grupo:W+"K4ZjEy7pSzQ0ZkyK3eXRnJ?s=cl&p=i&mlu=4&ilr=4"},
  {nome:"Ixquece",local:"Carnario · Rio de Janeiro",dest:"rio",tipo:["carnaval"],data:"2027-02-09",cupom:"B2P",cena:"sc-carnaval",
   site:"https://www.sympla.com.br/evento/ixquece-l-carnaval-2027/3531860?d=B2P",grupo:W+"K4ZjEy7pSzQ0ZkyK3eXRnJ?s=cl&p=i&mlu=4&ilr=4"},
  {nome:"Mixed By Mixed",local:"Carnario · Rio de Janeiro",dest:"rio",tipo:["carnaval"],data:"2027-02-09",cupom:"B2P",cena:"sc-carnaval",
@@ -2352,7 +2383,7 @@ function ticket(f,i){
  alt.push(`<a class="share" href="${shareUrl(f)}" ${ext}><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.2Z"/></svg>${L("Mandar pro amigo","Send to a friend")}</a>`);
  const cal=calUrl(f);if(cal)alt.push(`<a class="cal" href="${cal}" ${ext}>${L("Salvar na agenda","Add to calendar")}</a>`);
  if(f.pix)alt.push(`<a href="${f.pix}" ${ext}>${L("Pix sem taxa","Pix, no fee")}</a>`);
- if(f.extra)alt.push(`<a href="${f.extra.url}" ${ext}>${L(f.extra.lbl,"VIP boxes & info")}</a>`);
+ if(f.extra)alt.push(`<a href="${f.extra.url}" ${ext}>${L(f.extra.lbl,f.extra.en||"VIP boxes & info")}</a>`);
  if(f.grupo)alt.push(`<a href="${f.grupo}" ${ext}>${L("Entrar no grupo","Join the group")}</a>`);
  if(f.tipo.includes("reveillon")&&window.B2P_MAPS){const mu=window.B2P_MAPS(f);if(mu)alt.push(`<a href="${mu}" ${ext}>${L("Ver no mapa","See on map")}</a>`)}
  stub+=`<div class="alt">${alt.shift()}</div>`;
@@ -2493,15 +2524,22 @@ $("#more").addEventListener("click",e=>{if(e.target.closest("#moreBtn")){showAll
  window.B2P_MAPS=f=>mapsUrl(cidadeDe(f));
  const sel=$("#revCity");
  sel.innerHTML=ordem.filter(u=>nomes.some(c=>ufDe(c)===u)).map(u=>`<optgroup label="${UFN[u]}">${nomes.filter(c=>ufDe(c)===u).map(c=>{const n=CID[c].f.length;return`<option value="${c}">${c}${n?` (${n})`:""}</option>`}).join("")}</optgroup>`).join("");
+ const linksDe=f=>{const o=[];if(f.site&&f.noites)o.push([f.siteLbl||L("Pacote com desconto","Discounted package"),f.site,1]);if(f.noites)f.noites.forEach(([d,n,u])=>o.push([`${d} · ${n}`,u,0]));if(f.site&&!f.noites)o.push([f.siteLbl||L("Comprar com desconto","Buy with discount"),f.site,1]);if(f.extra)o.push([LANG==="en"?(f.extra.en||"VIP boxes & info"):f.extra.lbl,f.extra.url,0]);return o};
  function cidade(c){
   const d=CID[c]||{f:[],g:[]},inf=INFO[c];
   const mu=mapsUrl(c);
   $("#cInfo").innerHTML=`<h3>${c}<small>${UFN[ufDe(c)]||""}</small></h3>${inf?`<dl><div><dt>${L("Como chegar","Getting there")}</dt><dd>${LANG==="en"&&INFO_EN[c]?INFO_EN[c].c:inf.c}</dd></div><div><dt>${L("Dica B2P","B2P tip")}</dt><dd>${LANG==="en"&&INFO_EN[c]?INFO_EN[c].d:inf.d}</dd></div></dl>`:""}${mu?`<a class="gmaps" href="${mu}" ${ext}><span class="pinico" aria-hidden="true"></span>${L(`Ver ${c} no Google Maps`,`See ${c} on Google Maps`)}</a>`:""}`;
   document.querySelectorAll("#revMap .pin").forEach(p=>p.classList.toggle("sel",p.dataset.c===c));
   document.querySelectorAll("#revMap .st").forEach(s=>s.classList.toggle("on",s.dataset.uf===ufDe(c)));
-  $("#revList").innerHTML=d.f.map(f=>{const url=f.site||(f.noites&&f.noites[0]&&f.noites[0][2]);return`<li><a href="${url}" ${ext}><strong>${f.nome}</strong><small>${f.local}</small><span class="c">${f.cupom?L("Cupom ","Code ")+f.cupom:L("Desconto no link","Discount in link")} →</span></a></li>`}).join("")||`<li><small style="color:var(--muted)">${L("Festas com desconto em breve. Entre no grupo pra saber primeiro.","Discounted parties coming soon. Join the group to hear first.")}</small></li>`;
+  $("#revList").innerHTML=d.f.map(f=>{if(f.noites&&f.noites.length){return`<li class="rl-multi"><div class="rl-h"><strong>${f.nome}</strong><small>${f.local}</small></div><div class="ra-links">${linksDe(f).map(([t,u,pk])=>`<a class="${pk?"pk":""}" href="${u}" ${ext}>${t}</a>`).join("")}</div></li>`}const url=f.site;return`<li><a href="${url}" ${ext}><strong>${f.nome}</strong><small>${f.local}</small><span class="c">${f.cupom?L("Cupom ","Code ")+f.cupom:L("Desconto no link","Discount in link")} →</span></a></li>`}).join("")||`<li><small style="color:var(--muted)">${L("Festas com desconto em breve. Entre no grupo pra saber primeiro.","Discounted parties coming soon. Join the group to hear first.")}</small></li>`;
   $("#revGroups").innerHTML=d.g.map(([n,code])=>`<a class="grp" href="${W}${code}" ${ext}>${n}<span class="go">${L("Entrar","Join")}</span></a>`).join("")||`<a class="grp" href="${W}KHyHRBiWNOq4rH5nc0HiUA" ${ext}>${L("Grupo Réveillon","New Year's group")}<span class="go">${L("Entrar","Join")}</span></a>`;
  }
+ (function(){const box=$("#revAll");if(!box)return;
+  const dm=iso=>iso?iso.slice(8,10)+"."+iso.slice(5,7):"";
+  const cs=ordem.flatMap(u=>nomes.filter(c=>ufDe(c)===u&&CID[c].f.length));
+  if(LANG==="en"){$("#raH").textContent="Every New Year's party";$("#raLede").textContent="Each destination with its parties, dates and discount links."}
+  box.innerHTML=cs.map(c=>{const d=CID[c];return`<div class="ra-city"><h4>${c}<small>${UFN[ufDe(c)]||""}</small></h4><ul class="ra-list">${d.f.map(f=>{const quando=dm(f.data)+(f.fim?L(" a "," to ")+f.fim:"");const desc=f.cupom?L("Cupom ","Code ")+f.cupom:L("Desconto já no link","Discount already in the link");return`<li><div class="ra-h"><strong>${f.nome}</strong><span>${quando} · ${desc}</span></div><div class="ra-links">${linksDe(f).map(([t,u,pk])=>`<a class="${pk?"pk":""}" href="${u}" ${ext}>${t}</a>`).join("")}</div></li>`}).join("")}</ul>${d.g.length?`<div class="ra-g">${d.g.map(([n,code])=>`<a href="${W}${code}" ${ext}>${L("Entrar no grupo","Join the group")} ${n}</a>`).join("")}</div>`:""}</div>`}).join("");
+ })();
  const inicial=nomes.find(c=>CID[c].f.length)||nomes[0];
  if(inicial){sel.value=inicial;cidade(inicial)}
  sel.addEventListener("change",()=>cidade(sel.value));
@@ -3100,19 +3138,19 @@ contagem();setInterval(contagem,30000);
  /* réveillon */
  const R=ATIVAS.filter(f=>f.tipo.includes("reveillon"));
  if($("#rtBoard")){
-  const cid=f=>(f.local||"").split(" · ")[0];
+  const cid=f=>{const c=(f.local||"").split(" · ")[0];return c==="Zona Sul"?"Rio de Janeiro":c};
   const cidades=[...new Set(R.map(cid))];
   document.addEventListener("click",e=>{const a=e.target.closest("[data-revcity]");if(!a)return;const c=a.dataset.revcity;setTimeout(()=>{if(window.B2P_REVCITY)window.B2P_REVCITY(c)},80)});
   $("#rtWhen").textContent=L(`Réveillon 2027 · ${cidades.length} destinos`,`New Year's 2027 · ${cidades.length} destinations`);
   $("#rtH").textContent=L("Onde vai ser a sua virada?","Where will you ring in 2027?");
   $("#rtLede").textContent=L("Praia, vila rústica ou festa gigante: as viradas mais disputadas do Brasil e de Punta, com desconto B2P. Os lotes sobem rápido, quem decide antes paga menos.","Beach, rustic village or a huge party: the most wanted New Year's parties in Brazil and Punta, with a B2P discount. Prices rise fast, so deciding early pays off.");
   $("#rtCount").innerHTML=falta("2026-12-31").replace(L("dias pra começar","days to go"),L("dias pra virada","days to NYE")).replace(L("dia pra começar","day to go"),L("dia pra virada","day to NYE"));
-  const grupos={};R.forEach(f=>{const c=cid(f);(grupos[c]=grupos[c]||[]).push(f)});const pick=Object.keys(grupos).slice(0,7).map(c=>grupos[c]);
+  const grupos={};R.forEach(f=>{const c=cid(f);(grupos[c]=grupos[c]||[]).push(f)});const pick=Object.keys(grupos).map(c=>grupos[c]);
   $("#rtBoard").innerHTML=pick.map((fs,i)=>{const f=fs[0],c=cid(f),uf=(f.local||"").split(" · ")[1]||f.uf||"";
    if(fs.length===1){const u=compraUrl(f);const inn=`<span class="c">${c}</span><span class="p">${f.nome}</span><span class="s g">${uf}</span>`;return u?`<a class="dep" role="listitem" style="--i:${i}" href="${u}" ${ext}>${inn}</a>`:`<a class="dep" role="listitem" style="--i:${i}" href="#reveillon" data-revcity="${c}">${inn}</a>`}
    return`<div class="dep multi" role="listitem" style="--i:${i}"><a class="c" href="#reveillon" data-revcity="${c}">${c}</a><span class="p">${fs.map(x=>{const u=compraUrl(x);return u?`<a href="${u}" ${ext}>${x.nome}</a>`:x.nome}).join('<span class="sep"> · </span>')}</span><span class="s g">${uf}</span></div>`}).join("");
-  $("#rtCta").textContent=L("Ver o mapa da virada","See the NYE map");
-  $("#rtMore").innerHTML=L(`Mais ${Math.max(0,cidades.length-pick.length)} destinos no mapa, cada um com o seu grupo.`,`${Math.max(0,cidades.length-pick.length)} more destinations on the map, each with its own group.`);
+  $("#rtCta").textContent=L("Veja o mapa da virada","See the NYE map");
+  $("#rtMore").innerHTML=`<a class="tz-cta tz-cta2" href="#todos-reveillons">${L("Confira todos os réveillons aqui","See every New Year's party")}</a>`;
  }
 })();
 
