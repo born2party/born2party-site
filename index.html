@@ -1481,7 +1481,7 @@ body[data-pg]:not([data-pg="inicio"]) main::before{content:"";display:block;heig
 @media (prefers-reduced-motion:reduce){.js-sg .sg,.js-sg .sg-panel,.js-sg .sg-panel *,.js-sg .sg-list>*,.js-sg .hero *{opacity:1!important;transform:none!important;clip-path:none!important;animation:none!important;transition:none!important}}
 @media (max-width:640px){.poster li:nth-child(n+6){display:none}.dep:nth-child(n+6){display:none}}
 .dep .s:empty{display:none}
-a.dep{color:inherit;text-decoration:none}a.dep:hover .p{text-decoration:underline}
+a.dep,.dep a{color:inherit;text-decoration:none}.dep.multi a:hover{text-decoration:underline}.dep .p .sep{opacity:.5}a.dep:hover .p{text-decoration:underline}
 .poster li.lk{display:block}.poster li.lk>a{display:grid;grid-template-columns:auto 1fr;gap:2px 14px;align-items:baseline;color:inherit;text-decoration:none}.poster li.lk>a:hover .n{text-decoration:underline}
 
 /* ===== como garantir o desconto ===== */
@@ -2053,7 +2053,7 @@ const FESTAS=[
           ["29.12","Néctar Sunset · open bar","https://www.blueticket.com.br/evento/41216?c=b2p"],
           ["31.12","Réveillon · open bar + open food","https://www.blueticket.com.br/evento/41215?c=b2p"]]},
  {nome:"Réveillon Saudade",uf:"CE",local:"Cumbuco · Ceará",dest:"nordeste",tipo:["reveillon"],data:"2026-12-31",cupom:"B2P10",cena:"sc-praia",
-  site:"https://www.meubilhete.com.br/reveillon-saudade?cupom=B2P10",grupo:W+"IwnjgvTjBneLZL4duZdth9?s=cl&p=i&ilr=4"},
+  site:"https://www.meubilhete.com.br/reveillon-saudade?cupom=B2P10"},
  {nome:"Réveillon Arcanjos",uf:"AL",local:"Barra de São Miguel · AL",dest:"nordeste",tipo:["reveillon"],data:"2026-12-27",fim:"02.01",cupom:"B2P",cena:"sc-praia",
   site:"https://baladapp.com.br/evento/reveillon-arcanjos-2027/8758?cod=B2P",grupo:W+"CJGo1KmxuyYFecirEzAt2O?mode=gi_t"},
  {nome:"Let's Pipa",uf:"RN",local:"Pipa · RN",dest:"nordeste",tipo:["reveillon"],data:"2026-12-31",cupom:"B2P",cena:"sc-reveillon",
@@ -2115,9 +2115,9 @@ const RADAR=[
 ];
 /* grupos de réveillon por região */
 const REV=[
- ["Nordeste",[["Arcanjos","CJGo1KmxuyYFecirEzAt2O?mode=gi_t"],["Pipa","FsishVdcN1s1G1SaooXcYl?mode=gi_t"],["Milagres","DlNPrveVjS8B3FV1RYJcA6?mode=gi_t"],["Mil Sorrisos","CFRNr8xXpiVLYKxWiMJFu9?s=cl&p=i&mlu=4&ilr=4"],["Amoré","IoZMcFkjZy9HfCuLXNFeGW?mode=gi_t"],["Saudade","IwnjgvTjBneLZL4duZdth9?s=cl&p=i&ilr=4"],["Carneiros","FUcUpKsu5uhEiu59lYVFKw"],["Preá · Simbó","ED0u3hsTkFO3Z0alNq7ldL?mode=gi_t"]]],
- ["Bahia",[["Destino · Itacimirim","FfHvuTSMTLy1gM8LcBRI7V?mode=gi_t"],["Boipeba","JL79ttg3gMtLMN58ZeGT0r?mode=gi_t"],["Caraíva","H0AnPv99NeEFmh2FIulljY"],["Sal de Caraíva","C8A2y3FVjFhElyOzLk5zqG?s=cl&p=i&ilr=0"],["Trancoso","I8VX6vvHLkI5rtC7dT5fKS"]]],
- ["Rio e São Paulo",[["Rio / Búzios","KXfPAIJvOl4GJsC482Uox9?s=cl&p=i&mlu=4&ilr=4"],["Litoral Norte · Araxás","KH7pho2hZsdLQVGMivqHeK?mode=gi_t"],["Ilhabela","KRvW8gP0asS1gZZCCQKMaC?mode=r_c"],["Litoral Sul","CbhdG0iWwKVLXGI8dRiFkt?mode=gi_t"],["Litoral Norte","JSIqDL9OrolEWqW97G5bVl"]]],
+ ["Nordeste",[["Arcanjos","CJGo1KmxuyYFecirEzAt2O?mode=gi_t"],["Pipa","FsishVdcN1s1G1SaooXcYl?mode=gi_t"],["Milagres","DlNPrveVjS8B3FV1RYJcA6?mode=gi_t"],["Mil Sorrisos","CFRNr8xXpiVLYKxWiMJFu9?s=cl&p=i&mlu=4&ilr=4"],["Amoré","IoZMcFkjZy9HfCuLXNFeGW?mode=gi_t"],["Preá · Simbó","ED0u3hsTkFO3Z0alNq7ldL?mode=gi_t"]]],
+ ["Bahia",[["Destino · Itacimirim","FfHvuTSMTLy1gM8LcBRI7V?mode=gi_t"],["Boipeba","JL79ttg3gMtLMN58ZeGT0r?mode=gi_t"],["Caraíva","H0AnPv99NeEFmh2FIulljY"],["Sal de Caraíva","C8A2y3FVjFhElyOzLk5zqG?s=cl&p=i&ilr=0"]]],
+ ["Rio e São Paulo",[["Rio / Búzios","KXfPAIJvOl4GJsC482Uox9?s=cl&p=i&mlu=4&ilr=4"],["Litoral Norte · Araxás","KH7pho2hZsdLQVGMivqHeK?mode=gi_t"],["Litoral Norte","JSIqDL9OrolEWqW97G5bVl"]]],
  ["Santa Catarina",[["Praia do Rosa · Tantra Rosa e Virada Mágica","Ic0SNIp5lTxDtIarWyWIBD?mode=gi_t"]]],
  ["Fora do Brasil",[["Punta del Este","Lc4dM42rpwCFv2vVgCqQpf?mode=gi_t"]]]
 ];
@@ -2436,7 +2436,7 @@ $("#more").addEventListener("click",e=>{if(e.target.closest("#moreBtn")){showAll
  /* por cidade: festas pela cidade do local, grupos pelo destino de cada um */
  const UFN={AL:"Alagoas",BA:"Bahia",CE:"Ceará",PE:"Pernambuco",RN:"Rio Grande do Norte",RJ:"Rio de Janeiro",SP:"São Paulo",SC:"Santa Catarina",UY:L("Uruguai","Uruguay"),OUT:L("Outros destinos","Other destinations")};
  const CIDUF={"Barra de São Miguel":"AL","São Miguel dos Milagres":"AL","Japaratinga":"AL","Itacimirim":"BA","Boipeba":"BA","Caraíva":"BA","Trancoso":"BA","Cumbuco":"CE","Preá":"CE","Porto de Galinhas":"PE","Carneiros":"PE","Pipa":"RN","Rio de Janeiro":"RJ","Búzios":"RJ","Litoral Norte":"SP","Ilhabela":"SP","Praia do Rosa":"SC","Punta del Este":"UY"};
- const GCID={"Sal de Caraíva":["Caraíva"],"Arcanjos":["Barra de São Miguel"],"Pipa":["Pipa"],"Milagres":["São Miguel dos Milagres"],"Mil Sorrisos":["Japaratinga"],"Amoré":["Porto de Galinhas"],"Saudade":["Cumbuco"],"Simbó Preá":["Preá"],"Carneiros":["Carneiros"],"Destino · Itacimirim":["Itacimirim"],"Boipeba":["Boipeba"],"Caraíva":["Caraíva"],"Trancoso":["Trancoso"],"Rio / Búzios":["Rio de Janeiro","Búzios"],"Litoral Norte · Araxás":["Litoral Norte"],"Ilhabela":["Ilhabela"],"Litoral Sul":["Litoral Sul"],"Tantra Rosa":["Praia do Rosa"],"Praia do Rosa · Virada Mágica":["Praia do Rosa"],"Punta del Este":["Punta del Este"]};
+ const GCID={"Sal de Caraíva":["Caraíva"],"Arcanjos":["Barra de São Miguel"],"Pipa":["Pipa"],"Milagres":["São Miguel dos Milagres"],"Mil Sorrisos":["Japaratinga"],"Amoré":["Porto de Galinhas"],"Saudade":["Cumbuco"],"Simbó Preá":["Preá"],"Carneiros":["Carneiros"],"Destino · Itacimirim":["Itacimirim"],"Boipeba":["Boipeba"],"Caraíva":["Caraíva"],"Trancoso":["Trancoso"],"Rio / Búzios":["Rio de Janeiro","Búzios"],"Litoral Norte · Araxás":["Litoral Norte"],"Ilhabela":["Ilhabela"],"Litoral Sul":["Litoral Sul"],"Tantra Rosa":["Praia do Rosa"],"Praia do Rosa · Virada Mágica":["Praia do Rosa"],"Praia do Rosa · Tantra Rosa e Virada Mágica":["Praia do Rosa"],"Preá · Simbó":["Preá"],"Punta del Este":["Punta del Este"]};
  const ALIAS={"Maracaípe":"Porto de Galinhas","Zona Sul":"Rio de Janeiro"};
  const cidadeDe=f=>{if(f.cidade)return f.cidade;const c=(f.local||"").split(" · ")[0].trim();return ALIAS[c]||c||"Outros"};
  const CID={};
@@ -2505,6 +2505,7 @@ $("#more").addEventListener("click",e=>{if(e.target.closest("#moreBtn")){showAll
  const inicial=nomes.find(c=>CID[c].f.length)||nomes[0];
  if(inicial){sel.value=inicial;cidade(inicial)}
  sel.addEventListener("change",()=>cidade(sel.value));
+ window.B2P_REVCITY=c=>{if(!CID[c])return;sel.value=c;cidade(c);const el=$("#cInfo");if(el)el.scrollIntoView({block:"center"})};
  /* mapa: contornos simplificados do Brasil e do Uruguai (lon, lat) */
  const BR=[[-51.6,4.4],[-50.0,1.8],[-49.9,0.2],[-48.4,-0.3],[-46.5,-0.9],[-44.4,-2.5],[-42.0,-2.8],[-40.0,-2.85],[-38.5,-3.7],[-37.3,-4.7],[-35.2,-5.1],[-34.8,-7.15],[-34.9,-8.1],[-35.7,-9.7],[-36.9,-10.9],[-38.5,-13.0],[-39.0,-14.8],[-39.1,-17.5],[-39.8,-19.6],[-40.3,-20.3],[-41.0,-22.0],[-42.0,-22.95],[-43.2,-23.0],[-44.5,-23.3],[-45.4,-23.9],[-46.4,-24.0],[-47.9,-25.0],[-48.5,-26.2],[-48.6,-27.6],[-48.8,-28.6],[-49.7,-29.4],[-50.3,-30.5],[-51.2,-31.6],[-52.3,-32.4],[-53.4,-33.75],[-53.2,-32.5],[-54.6,-31.5],[-55.6,-30.85],[-56.6,-30.2],[-57.6,-30.2],[-56.0,-28.6],[-55.0,-27.8],[-53.8,-27.1],[-53.6,-26.2],[-54.6,-25.6],[-54.3,-24.0],[-55.6,-23.0],[-55.7,-22.5],[-57.8,-22.1],[-57.9,-20.0],[-57.7,-19.0],[-58.2,-17.5],[-60.2,-16.3],[-60.0,-13.5],[-61.9,-13.3],[-65.0,-11.9],[-65.4,-10.8],[-66.6,-9.9],[-68.5,-11.0],[-70.6,-11.0],[-70.6,-9.5],[-72.2,-10.0],[-73.9,-7.3],[-72.9,-5.2],[-70.0,-4.3],[-69.4,-1.1],[-69.8,0.6],[-67.8,1.8],[-66.9,1.2],[-64.0,2.0],[-63.4,3.9],[-60.7,5.2],[-60.0,4.5],[-59.6,2.4],[-58.9,1.3],[-56.5,1.9],[-54.6,2.3],[-52.4,2.2]];
  const UY=[[-53.4,-33.75],[-54.9,-34.95],[-56.3,-34.9],[-57.9,-34.4],[-58.4,-33.1],[-58.1,-32.0],[-57.6,-30.2],[-56.6,-30.2],[-55.6,-30.85],[-54.6,-31.5],[-53.2,-32.5]];
@@ -3101,12 +3102,15 @@ contagem();setInterval(contagem,30000);
  if($("#rtBoard")){
   const cid=f=>(f.local||"").split(" · ")[0];
   const cidades=[...new Set(R.map(cid))];
+  document.addEventListener("click",e=>{const a=e.target.closest("[data-revcity]");if(!a)return;const c=a.dataset.revcity;setTimeout(()=>{if(window.B2P_REVCITY)window.B2P_REVCITY(c)},80)});
   $("#rtWhen").textContent=L(`Réveillon 2027 · ${cidades.length} destinos`,`New Year's 2027 · ${cidades.length} destinations`);
   $("#rtH").textContent=L("Onde vai ser a sua virada?","Where will you ring in 2027?");
   $("#rtLede").textContent=L("Praia, vila rústica ou festa gigante: as viradas mais disputadas do Brasil e de Punta, com desconto B2P. Os lotes sobem rápido, quem decide antes paga menos.","Beach, rustic village or a huge party: the most wanted New Year's parties in Brazil and Punta, with a B2P discount. Prices rise fast, so deciding early pays off.");
   $("#rtCount").innerHTML=falta("2026-12-31").replace(L("dias pra começar","days to go"),L("dias pra virada","days to NYE")).replace(L("dia pra começar","day to go"),L("dia pra virada","day to NYE"));
-  const pick=[];const vistos=new Set();R.forEach(f=>{const c=cid(f);if(!vistos.has(c)&&pick.length<7){vistos.add(c);pick.push(f)}});
-  $("#rtBoard").innerHTML=pick.map((f,i)=>{const u=compraUrl(f);const inn=`<span class="c">${cid(f)}</span><span class="p">${f.nome}</span><span class="s g">${(f.local||"").split(" · ")[1]||f.uf||""}</span>`;return u?`<a class="dep" role="listitem" style="--i:${i}" href="${u}" ${ext}>${inn}</a>`:`<div class="dep" role="listitem" style="--i:${i}">${inn}</div>`}).join("");
+  const grupos={};R.forEach(f=>{const c=cid(f);(grupos[c]=grupos[c]||[]).push(f)});const pick=Object.keys(grupos).slice(0,7).map(c=>grupos[c]);
+  $("#rtBoard").innerHTML=pick.map((fs,i)=>{const f=fs[0],c=cid(f),uf=(f.local||"").split(" · ")[1]||f.uf||"";
+   if(fs.length===1){const u=compraUrl(f);const inn=`<span class="c">${c}</span><span class="p">${f.nome}</span><span class="s g">${uf}</span>`;return u?`<a class="dep" role="listitem" style="--i:${i}" href="${u}" ${ext}>${inn}</a>`:`<a class="dep" role="listitem" style="--i:${i}" href="#reveillon" data-revcity="${c}">${inn}</a>`}
+   return`<div class="dep multi" role="listitem" style="--i:${i}"><a class="c" href="#reveillon" data-revcity="${c}">${c}</a><span class="p">${fs.map(x=>{const u=compraUrl(x);return u?`<a href="${u}" ${ext}>${x.nome}</a>`:x.nome}).join('<span class="sep"> · </span>')}</span><span class="s g">${uf}</span></div>`}).join("");
   $("#rtCta").textContent=L("Ver o mapa da virada","See the NYE map");
   $("#rtMore").innerHTML=L(`Mais ${Math.max(0,cidades.length-pick.length)} destinos no mapa, cada um com o seu grupo.`,`${Math.max(0,cidades.length-pick.length)} more destinations on the map, each with its own group.`);
  }
