@@ -1875,6 +1875,11 @@ body{transition:background-color .2s linear}
         <div class="cv-info" id="cvInfo"></div>
       </div>
     </article>
+    <div class="rev-all" id="praia-carnaval">
+      <h3 id="cpH">Carnaval na praia</h3>
+      <p id="cpLede">Carnaval fora das capitais, com todos os dias e os links com desconto.</p>
+      <div class="ra-grid" id="carnPraia"></div>
+    </div>
   </section>
 
 
@@ -2068,6 +2073,12 @@ const FESTAS=[
  {nome:"Balbvrdia RJ",local:"Rio de Janeiro · Dark Nights",dest:"rio",tipo:["agenda"],data:"2026-10-31",cupom:"B2P",cena:"sc-night",site:"https://www.sympla.com.br/evento/balbvrdia-apresenta-dark-nights/3598743?d=B2P"},
  {nome:"Colosseo",local:"Rio de Janeiro",dest:"rio",tipo:["agenda"],data:"2026-11-20",cupom:"B2P",cena:"sc-night",site:ING+"58b5b2e9-6cc3-46d0-afef-51467d67b980/tickets?passkey=B2P"},
  {nome:"Baile do Momo",local:"Rio de Janeiro",dest:"rio",tipo:["agenda"],data:"2026-11-21",cupom:"B2P",cena:"sc-carnaval",site:ING+"5527ecbb-76e6-4e2c-b92b-d026895dfc7a/tickets?coupon=B2P"},
+ {nome:"Carnaval Tantrarosa",local:"Garopaba · Santa Catarina",dest:"sc",tipo:["carnaval"],data:"2027-02-05",fim:"08.02",cupom:"",linkB2P:true,cena:"sc-carnaval",
+  site:"https://www.sympla.com.br/pacote-de-eventos--carnaval-tantrarosa-2027--05-a-08-de-fevereiro__3604651?afid=114342",siteLbl:L("Pacote com desconto","Discounted package"),grupo:W+"Lu71rtoiv1W6tW2m0IyFQ9?mode=gi_t",
+  noites:[["05.02","Abertura Oficial","https://www.sympla.com.br/abertura-oficial--carnaval-tantrarosa-2027--0502__3604600?afid=114341"],
+          ["06.02","Baile da Favorita","https://www.sympla.com.br/baile-da-favorita--carnaval-tantrarosa-2027---0602__3604674?afid=114340"],
+          ["07.02","Carnarosa","https://www.sympla.com.br/carnarosa--carnaval-tantrarosa-2027--0702__3604690?afid=114338"],
+          ["08.02","Bloco do Carna","https://www.sympla.com.br/bloco-do-carna--carnaval-tantrarosa-2027--0802__3604705?afid=114339m"]]},
  /* ---- réveillon 2027 ---- */
  {nome:"Tantra Rosa",local:"Praia do Rosa · SC",dest:"sc",tipo:["reveillon"],data:"2026-12-28",fim:"02.01",cupom:"",linkB2P:true,cena:"sc-praia",
   site:"https://www.sympla.com.br/pacote-eventos-reveillon-tantrarosa-2027--28-de-dezembro-a-02-de-janeiro__3396225?afid=110928",siteLbl:L("Pacote com desconto","Discounted package"),
@@ -2101,6 +2112,7 @@ const FESTAS=[
   pix:"https://vendas.ticketmaker.com.br/evento/reveillon-destino-2027-pacote-pix-sem-taxa/6889-812/B2P",grupo:W+"FfHvuTSMTLy1gM8LcBRI7V?mode=gi_t"},
  {nome:"Alma Boipeba",local:"Boipeba · Bahia",dest:"bahia",tipo:["reveillon"],data:"2026-12-31",cupom:"B2P",cena:"sc-praia",
   site:"https://www.sympla.com.br/evento__3254347?d=B2P",grupo:W+"JL79ttg3gMtLMN58ZeGT0r?mode=gi_t"},
+ {nome:"The Roof Réveillon",local:"Arraial d'Ajuda · Bahia",dest:"bahia",tipo:["reveillon"],data:"2026-12-31",cupom:"",linkB2P:true,cena:"sc-reveillon",site:"https://ingressos.sundancefestival.com.br/the-roof-reveillon-arraial-dajuda-2027__4115?v=b2p"},
  {nome:"Sal de Caraíva",local:"Caraíva · Bahia",dest:"bahia",tipo:["reveillon"],data:"2026-12-31",cupom:"",linkB2P:true,cena:"sc-praia",
   site:"https://gdya.dance/sal-de-caraiva-26-27-721a?link=b2p",grupo:W+"C8A2y3FVjFhElyOzLk5zqG?s=cl&p=i&ilr=0"},
  {nome:"Réveillon Sal",local:"Zona Sul · Rio de Janeiro",dest:"rio",tipo:["reveillon"],data:"2026-12-31",cupom:"B2P",cena:"sc-reveillon",
@@ -2467,7 +2479,7 @@ $("#more").addEventListener("click",e=>{if(e.target.closest("#moreBtn")){showAll
  $("#revCount").textContent=dRev>0?L(`Faltam ${dRev} dias`,`${dRev} days to go`):L("É hoje","Today");
  /* por cidade: festas pela cidade do local, grupos pelo destino de cada um */
  const UFN={AL:"Alagoas",BA:"Bahia",CE:"Ceará",PE:"Pernambuco",RN:"Rio Grande do Norte",RJ:"Rio de Janeiro",SP:"São Paulo",SC:"Santa Catarina",UY:L("Uruguai","Uruguay"),OUT:L("Outros destinos","Other destinations")};
- const CIDUF={"Barra de São Miguel":"AL","São Miguel dos Milagres":"AL","Japaratinga":"AL","Itacimirim":"BA","Boipeba":"BA","Caraíva":"BA","Trancoso":"BA","Cumbuco":"CE","Preá":"CE","Porto de Galinhas":"PE","Carneiros":"PE","Pipa":"RN","Rio de Janeiro":"RJ","Búzios":"RJ","Litoral Norte":"SP","Ilhabela":"SP","Praia do Rosa":"SC","Punta del Este":"UY"};
+ const CIDUF={"Barra de São Miguel":"AL","São Miguel dos Milagres":"AL","Japaratinga":"AL","Itacimirim":"BA","Boipeba":"BA","Caraíva":"BA","Trancoso":"BA","Arraial d'Ajuda":"BA","Cumbuco":"CE","Preá":"CE","Porto de Galinhas":"PE","Carneiros":"PE","Pipa":"RN","Rio de Janeiro":"RJ","Búzios":"RJ","Litoral Norte":"SP","Ilhabela":"SP","Praia do Rosa":"SC","Punta del Este":"UY"};
  const GCID={"Sal de Caraíva":["Caraíva"],"Arcanjos":["Barra de São Miguel"],"Pipa":["Pipa"],"Milagres":["São Miguel dos Milagres"],"Mil Sorrisos":["Japaratinga"],"Amoré":["Porto de Galinhas"],"Saudade":["Cumbuco"],"Simbó Preá":["Preá"],"Carneiros":["Carneiros"],"Destino · Itacimirim":["Itacimirim"],"Boipeba":["Boipeba"],"Caraíva":["Caraíva"],"Trancoso":["Trancoso"],"Rio / Búzios":["Rio de Janeiro","Búzios"],"Litoral Norte · Araxás":["Litoral Norte"],"Ilhabela":["Ilhabela"],"Litoral Sul":["Litoral Sul"],"Tantra Rosa":["Praia do Rosa"],"Praia do Rosa · Virada Mágica":["Praia do Rosa"],"Praia do Rosa · Tantra Rosa e Virada Mágica":["Praia do Rosa"],"Preá · Simbó":["Preá"],"Punta del Este":["Punta del Este"]};
  const ALIAS={"Maracaípe":"Porto de Galinhas","Zona Sul":"Rio de Janeiro"};
  const cidadeDe=f=>{if(f.cidade)return f.cidade;const c=(f.local||"").split(" · ")[0].trim();return ALIAS[c]||c||"Outros"};
@@ -2519,7 +2531,7 @@ $("#more").addEventListener("click",e=>{if(e.target.closest("#moreBtn")){showAll
   "Punta del Este":{c:"Uruguay, about 130 km from Montevideo.",d:"Bring a jacket: nights can be cool even in summer."},
   "Litoral Sul":{c:"Join the group for destination details.",d:"Discount links come out first in the group."}
  };
- const COORD={"Barra de São Miguel":[-35.90,-9.84],"São Miguel dos Milagres":[-35.37,-9.26],"Japaratinga":[-35.26,-9.09],"Porto de Galinhas":[-35.00,-8.50],"Carneiros":[-35.08,-8.70],"Pipa":[-35.05,-6.23],"Cumbuco":[-38.73,-3.63],"Preá":[-40.42,-2.82],"Itacimirim":[-38.05,-12.62],"Boipeba":[-38.92,-13.62],"Caraíva":[-39.15,-16.81],"Trancoso":[-39.10,-16.59],"Rio de Janeiro":[-43.18,-22.97],"Búzios":[-41.88,-22.75],"Litoral Norte":[-45.56,-23.79],"Ilhabela":[-45.36,-23.78],"Praia do Rosa":[-48.64,-28.13],"Punta del Este":[-54.95,-34.96]};
+ const COORD={"Barra de São Miguel":[-35.90,-9.84],"São Miguel dos Milagres":[-35.37,-9.26],"Japaratinga":[-35.26,-9.09],"Porto de Galinhas":[-35.00,-8.50],"Carneiros":[-35.08,-8.70],"Pipa":[-35.05,-6.23],"Cumbuco":[-38.73,-3.63],"Preá":[-40.42,-2.82],"Itacimirim":[-38.05,-12.62],"Boipeba":[-38.92,-13.62],"Caraíva":[-39.15,-16.81],"Arraial d'Ajuda":[-39.07,-16.49],"Trancoso":[-39.10,-16.59],"Rio de Janeiro":[-43.18,-22.97],"Búzios":[-41.88,-22.75],"Litoral Norte":[-45.56,-23.79],"Ilhabela":[-45.36,-23.78],"Praia do Rosa":[-48.64,-28.13],"Punta del Este":[-54.95,-34.96]};
  const MQ={"Litoral Norte":"São Sebastião, São Paulo","Carneiros":"Praia dos Carneiros, Tamandaré, Pernambuco","Preá":"Preá, Cruz, Ceará","Itacimirim":"Itacimirim, Camaçari, Bahia","Punta del Este":"Punta del Este, Uruguai","Litoral Sul":null};
  const mapsUrl=c=>{const q=c in MQ?MQ[c]:`${c}, ${(UFN[ufDe(c)]||"").replace("Outros destinos","")}`;return q?"https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(q):null};
  window.B2P_MAPS=f=>mapsUrl(cidadeDe(f));
@@ -2574,7 +2586,7 @@ $("#more").addEventListener("click",e=>{if(e.target.closest("#moreBtn")){showAll
  /* quiz: qual réveillon combina com você */
  const TAG={"Pipa":["agito","voo","virada"],"Praia do Rosa":["agito","pacote","sul","sp"],"Rio de Janeiro":["agito","rj","virada","voo"],"Búzios":["agito","rj","sp","virada"],
   "Litoral Norte":["natureza","sp","virada"],"Porto de Galinhas":["agito","natureza","voo","virada"],"São Miguel dos Milagres":["natureza","voo","virada"],"Japaratinga":["natureza","voo","virada"],
-  "Barra de São Miguel":["natureza","voo","pacote"],"Caraíva":["rustico","voo","pacote"],"Boipeba":["rustico","natureza","voo"],"Itacimirim":["natureza","voo","pacote"],
+  "Barra de São Miguel":["natureza","voo","pacote"],"Caraíva":["rustico","voo","pacote"],"Arraial d'Ajuda":["agito","voo","virada"],"Boipeba":["rustico","natureza","voo"],"Itacimirim":["natureza","voo","pacote"],
   "Cumbuco":["aventura","voo","virada"],"Preá":["aventura","natureza","voo"],"Punta del Este":["exterior","agito","sul"]};
  const QS=[
   {q:L("Qual é a sua vibe?","What's your vibe?"),w:2,o:[["agito",L("Festa grande e agito","Big party energy"),L("Line-up forte e muita gente","Strong line-up, big crowd")],["natureza",L("Pé na areia e natureza","Barefoot & nature"),L("Praia bonita e clima leve","Beautiful beach, easy vibe")],["rustico",L("Vila rústica e charmosa","Rustic, charming village"),L("Sem carro, roots e exclusivo","Car-free, roots, exclusive")],["aventura",L("Vento, kite e aventura","Wind, kite & adventure"),L("Dunas, lagoas e esporte","Dunes, lagoons and sport")]]},
@@ -2766,6 +2778,15 @@ $("#pcopy").addEventListener("click",e=>copyText(e.currentTarget.dataset.code,e.
  const W="https://chat.whatsapp.com/";
  /* local de festas/camarotes B2P do Rio (nome da festa → polo do mapa) */
  const ONDE_CARN={"Camarote Alma":"Sambódromo · Sapucaí","Camarote N1":"Sambódromo · Sapucaí"};
+ (function(){const box=$("#carnPraia");if(!box)return;
+  const fs=ATIVAS.filter(f=>f.tipo.includes("carnaval")&&f.dest==="sc");
+  if(!fs.length){$("#praia-carnaval").hidden=true;return}
+  if(LANG==="en"){$("#cpH").textContent="Beach Carnival";$("#cpLede").textContent="Carnival outside the big cities, every day with discount links."}
+  const dm=iso=>iso?iso.slice(8,10)+"."+iso.slice(5,7):"";
+  const lk=f=>{const o=[];if(f.site&&f.noites)o.push([f.siteLbl||L("Pacote com desconto","Discounted package"),f.site,1]);(f.noites||[]).forEach(([d,n,u])=>o.push([`${d} · ${n}`,u,0]));if(f.site&&!f.noites)o.push([L("Comprar com desconto","Buy with discount"),f.site,1]);return o};
+  const porCidade={};fs.forEach(f=>{const c=(f.local||"").split(" · ")[0];(porCidade[c]=porCidade[c]||[]).push(f)});
+  box.innerHTML=Object.entries(porCidade).map(([c,lista])=>`<div class="ra-city"><h4>${c}<small>${(lista[0].local||"").split(" · ")[1]||""}</small></h4><ul class="ra-list">${lista.map(f=>`<li><div class="ra-h"><strong>${f.nome}</strong><span>${dm(f.data)}${f.fim?L(" a "," to ")+f.fim:""} · ${f.cupom?L("Cupom ","Code ")+f.cupom:L("Desconto já no link","Discount already in the link")}</span></div><div class="ra-links">${lk(f).map(([t,u,pk])=>`<a class="${pk?"pk":""}" href="${u}" ${ext}>${t}</a>`).join("")}</div></li>`).join("")}</ul>${lista[0].grupo?`<div class="ra-g"><a href="${lista[0].grupo}" ${ext}>${L("Entrar no grupo do Carnaval Rosa","Join the Carnaval Rosa group")}</a></div>`:""}</div>`).join("");
+ })();
  const carnB2P=ATIVAS.filter(f=>f.tipo.includes("carnaval")&&f.dest==="rio");
  const tabs=$("#cvTabs"),side=$("#cmapSide"),F=$("#cmapF");
  const gm=q=>"https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(q);
