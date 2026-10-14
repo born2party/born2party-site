@@ -1,8 +1,14 @@
+<!doctype html>
+<html lang="pt-BR">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Born 2 Party</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Big+Shoulders+Display:wght@500;800;900&family=Instrument+Sans:wght@400;500;600&family=Martian+Mono:wght@400;600&display=swap">
 <style>
+/* fora do Claude os comentários não funcionam: área escondida */
+#comentarios{display:none!important}
 /* Layout: revista de nightlife — papel frio + tinta, um azul B2P, tipografia gigante, ingressos como objeto central */
 :root{
   --paper:#09080C;
@@ -2072,12 +2078,12 @@ const FESTAS=[
  {nome:"5521 SP",local:"São Paulo · Sunset",dest:"sp",tipo:["agenda"],data:"2026-10-24",cupom:"B2P",cena:"sc-night",site:"https://www.sympla.com.br/evento/sunset-5521-sp/3587979?d=B2P"},
  {nome:"Blackcaviar",local:"São Paulo",dest:"sp",tipo:["agenda"],data:"2026-10-24",cupom:"",linkB2P:true,cena:"sc-night",site:"https://gdya.dance/blackcaviar-2410-02e4?link=B2P"},
  {nome:"Pagode do Chuvisco",local:"São Paulo",dest:"sp",tipo:["agenda"],data:"2026-11-14",cupom:"B2P",cena:"sc-night",site:"https://embedstore.ingresse.com/tickets/www.ingresse.com/event/108484?passkey=B2P"},
+ {nome:"Samba do Mel",local:"São Paulo",dest:"sp",tipo:["agenda"],data:"2026-11-14",cupom:"",linkB2P:true,cena:"sc-night",site:"https://gandaya.dance/events/samba-do-mel-79a7?link=b2p"},
  {nome:"Evol",local:"São Paulo",dest:"sp",tipo:["agenda"],data:"2026-10-31",cupom:"B2P",cena:"sc-night",site:ING+"fae37757-820d-4d20-b436-158d8b5bee7b/tickets?coupon=B2P"},
  {nome:"Maracutaia com Léo Foguete",local:"São Paulo",dest:"sp",tipo:["agenda"],data:"2026-11-06",cupom:"",linkB2P:true,cena:"sc-night",site:"https://gdya.dance/maracutaia-com-leo-foguete-af30?link=b2p"},
  {nome:"Baile do Addam",local:"São Paulo",dest:"sp",tipo:["agenda"],data:"2026-11-07",cupom:"B2P",cena:"sc-night",site:ING+"ff967505-aa71-400e-94d5-97e625ae0aa2/tickets?passkey=B2P"},
  {nome:"Paquera · 9ª edição",local:"São Paulo",dest:"sp",tipo:["agenda"],data:"2026-11-21",cupom:"b2b",cena:"sc-night",site:"https://zig.tickets/eventos/festa-paquera-9-edicao?cupom=b2b"},
  {nome:"Pode Chegar · 1 ano",local:"São Paulo",dest:"sp",tipo:["agenda"],data:"2026-10-24",cupom:"",linkB2P:true,cena:"sc-night",site:"https://gdya.dance/pode-chegar-edicao-1-ano-f433?link=b2p"},
- {nome:"Samba do Mel",local:"São Paulo",dest:"sp",tipo:["agenda"],data:"2026-11-14",cupom:"",linkB2P:true,cena:"sc-night",site:"https://gandaya.dance/events/samba-do-mel-79a7?link=b2p"},
  {nome:"Retrô",local:"São Paulo · Halloween",dest:"sp",tipo:["agenda"],data:"2026-10-24",cupom:"",linkB2P:true,cena:"sc-night",site:"https://gandaya.dance/events/retro-02db?link=b2p"},
  {nome:"Bota Fora",local:L("São Paulo · compra pelo WhatsApp","São Paulo · buy via WhatsApp"),dest:"sp",tipo:["agenda"],data:"2026-11-06",cupom:"",linkB2P:true,cena:"sc-night",site:"https://wa.link/axc84h",siteLbl:L("Comprar pelo WhatsApp","Buy via WhatsApp")},
  {nome:"Balbvrdia RJ",local:"Rio de Janeiro · Dark Nights",dest:"rio",tipo:["agenda"],data:"2026-10-31",cupom:"B2P",cena:"sc-night",site:"https://www.sympla.com.br/evento/balbvrdia-apresenta-dark-nights/3598743?d=B2P"},
