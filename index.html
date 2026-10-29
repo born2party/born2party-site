@@ -2,7 +2,14 @@
 <html lang="pt-BR">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Born 2 Party</title>
+<title>Born 2 Party | Ingressos com desconto para as melhores festas do Brasil</title>
+<meta name="description" content="Festas em SP, no Rio, Réveillon 2027 e Carnaval 2027 com desconto B2P. Escolhe a festa, usa o cupom B2P e compra no site oficial.">
+<link rel="canonical" href="https://born2party.com.br/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Born 2 Party | Ingressos com desconto">
+<meta property="og:description" content="Festas em SP, no Rio, Réveillon 2027 e Carnaval 2027 com desconto B2P.">
+<meta property="og:url" content="https://born2party.com.br/">
+<meta property="og:locale" content="pt_BR">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Big+Shoulders+Display:wght@500;800;900&family=Instrument+Sans:wght@400;500;600&family=Martian+Mono:wght@400;600&display=swap">
@@ -1521,6 +1528,12 @@ body[data-pg]:not([data-pg="inicio"]) main::before{content:"";display:block;heig
 .carn-cities .cc-acts a:hover{background:rgba(255,255,255,.15)}
 @media (max-width:1000px){.carn-cities{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:640px){.carn-cities{grid-template-columns:1fr 1fr}}
+.cidades{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:20px;width:100%}
+.cidades .cid-l{font-weight:600;font-size:14px;opacity:.75;margin-right:4px}
+.cidades a{display:inline-flex;align-items:center;gap:7px;border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:8px 14px;font-weight:600;font-size:14px;color:inherit;text-decoration:none;transition:border-color .2s}
+.cidades a:hover{border-color:#B79CF0}
+.cidades a b{font-weight:500;opacity:.55}
+.ticket.hl{outline:2px solid #B79CF0;outline-offset:4px;border-radius:inherit}
 a.dep,.dep a{color:inherit;text-decoration:none}.dep.multi a:hover{text-decoration:underline}.dep .p .sep{opacity:.5}a.dep:hover .p{text-decoration:underline}
 .poster li.lk{display:block}.poster li.lk>a{display:grid;grid-template-columns:auto 1fr;gap:2px 14px;align-items:baseline;color:inherit;text-decoration:none}.poster li.lk>a:hover .n{text-decoration:underline}
 
@@ -1702,6 +1715,7 @@ body{transition:background-color .2s linear}
         <a class="sp-btn keep" href="#festas">Ver as festas →</a>
         <a class="sp-btn ghost" href="#reveillon">Réveillon 2027</a>
       </div>
+      <nav class="cidades" id="cidades" aria-label="Escolhe sua cidade"></nav>
     </div>
     <div class="today" id="hoje" hidden></div>
   </section>
@@ -2003,6 +2017,7 @@ body{transition:background-color .2s linear}
         <p id="fTag">Ingresso mais barato pras melhores festas do Brasil.</p>
       </div>
       <div class="f-col"><h4 id="fH1">Festas</h4><a href="#agenda" id="fL1">Agenda</a><a href="#universitarias" id="fL2">Universitárias</a><a href="#reveillon" id="fL3">Réveillon 2027</a><a href="#carnaval" id="fL4">Carnaval 2027</a><a href="#wellness">Wellness</a></div>
+      <div class="f-col"><h4>Por cidade</h4><a href="https://born2party.com.br/festas-em-sp.html">Festas em SP</a><a href="https://born2party.com.br/festas-no-rio.html">Festas no Rio</a><a href="https://born2party.com.br/carnaval-rio-2027.html">Carnaval Rio 2027</a><a href="https://born2party.com.br/reveillon-2027.html">Réveillon 2027 com desconto</a></div>
       <div class="f-col"><h4 id="fH2">Grupos</h4><a href="https://chat.whatsapp.com/FG8udDPWFwF6Vcp9tP41Mm?mode=gi_t" target="_blank" rel="noopener" id="fG1">B2P Geral</a><a href="https://chat.whatsapp.com/KHyHRBiWNOq4rH5nc0HiUA" target="_blank" rel="noopener" id="fG2">Réveillon</a><a href="https://chat.whatsapp.com/JrHGtucCwpvIZyIWOaplfz?mode=gi_t" target="_blank" rel="noopener" id="fG3">Faculdades</a><a href="#grupos" id="fG4">Ver todos</a></div>
       <div class="f-col"><h4 id="fH3">Contato</h4><a href="#fale" id="fC1">Fale conosco</a><a href="mailto:b2p.borntoparty@gmail.com">b2p.borntoparty@gmail.com</a><a href="https://www.instagram.com/born2party___/" target="_blank" rel="noopener">Instagram</a><a href="https://www.tiktok.com/@born2party___" target="_blank" rel="noopener">TikTok</a></div>
     </div>
@@ -2087,12 +2102,14 @@ const FESTAS=[
  {nome:"Pode Chegar · 1 ano",local:"São Paulo",dest:"sp",tipo:["agenda"],data:"2026-10-24",cupom:"",linkB2P:true,cena:"sc-night",site:"https://gdya.dance/pode-chegar-edicao-1-ano-f433?link=b2p"},
  {nome:"Melhor Eu Ir",local:"São Paulo",dest:"sp",tipo:["agenda"],data:"2026-11-07",cupom:"B2P",site:ING+"3989a819-f60d-4426-8917-e73ec18a4a0a/tickets?passkey=B2P"},
  {nome:"Corcovado",local:"São Paulo",dest:"sp",tipo:["agenda"],data:"2026-11-13",cupom:"B2P",cena:"sc-night",site:ING+"e9c79185-8196-46d2-ab0e-ccc334302428/tickets?passkey=B2P"},
+ {nome:"Molho",local:"São Paulo",dest:"sp",tipo:["agenda"],data:"2026-10-31",cupom:"B2P",cena:"sc-night",site:ING+"bf7574da-bba0-4bb0-b599-3f6c6b03ac14/tickets?passkey=B2P"},
  {nome:"Samba do Mel",local:"São Paulo",dest:"sp",tipo:["agenda"],data:"2026-11-14",cupom:"",linkB2P:true,cena:"sc-night",site:"https://gandaya.dance/events/samba-do-mel-79a7?link=b2p"},
  {nome:"Retrô",local:"São Paulo · Halloween",dest:"sp",tipo:["agenda"],data:"2026-10-24",cupom:"",linkB2P:true,cena:"sc-night",site:"https://gdya.dance/retro-02db?link=b2p"},
  {nome:"Bota Fora",local:L("São Paulo · compra pelo WhatsApp","São Paulo · buy via WhatsApp"),dest:"sp",tipo:["agenda"],data:"2026-11-06",cupom:"",linkB2P:true,cena:"sc-night",site:"https://wa.link/axc84h",siteLbl:L("Comprar pelo WhatsApp","Buy via WhatsApp")},
  {nome:"Delirium",local:L("São Paulo · compra pelo WhatsApp","São Paulo · buy via WhatsApp"),dest:"sp",tipo:["agenda"],data:"2026-11-27",cupom:"",linkB2P:true,cena:"sc-night",site:"https://wa.link/urlurz",siteLbl:L("Comprar pelo WhatsApp","Buy via WhatsApp")},
  {nome:"Retronejo",local:"São Paulo",dest:"sp",tipo:["agenda"],data:"2026-11-28",cupom:"B2P",cena:"sc-night",site:ING+"98d68ae0-86b1-44f3-928f-b57b06cff650/tickets?passkey=B2P"},
- {nome:"Deu Samba",local:"São Paulo",dest:"sp",tipo:["agenda"],data:"2026-12-12",cupom:"B2P",cena:"sc-night",site:ING+"4d1b95b5-b7e1-47ca-9097-8ccc81f9e168/tickets?cod=B2P"},
+ {nome:"Deu Samba",local:"São Paulo",dest:"sp",tipo:["agenda"],data:"2026-12-12",cupom:"B2P",cena:"sc-night",site:ING+"4d1b95b5-b7e1-47ca-9097-8ccc81f9e168/tickets?passkey=B2P"},
+ {nome:"Corona Surf Skate",local:"São Paulo",dest:"sp",tipo:["agenda"],data:"2026-11-28",cupom:"",linkB2P:true,cena:"sc-night",site:"https://link.etkts.com.br/corona-surf-skate-lx99l5-B2P"},
  {nome:"Balbvrdia RJ",local:"Rio de Janeiro · Dark Nights",dest:"rio",tipo:["agenda"],data:"2026-10-31",cupom:"B2P",cena:"sc-night",site:"https://www.sympla.com.br/evento/balbvrdia-apresenta-dark-nights/3598743?d=B2P"},
  {nome:"Colosseo",local:"Rio de Janeiro",dest:"rio",tipo:["agenda"],data:"2026-11-20",cupom:"B2P",cena:"sc-night",site:ING+"58b5b2e9-6cc3-46d0-afef-51467d67b980/tickets?passkey=B2P"},
  {nome:"Baile do Momo",local:"Rio de Janeiro",dest:"rio",tipo:["agenda"],data:"2026-11-21",cupom:"B2P",cena:"sc-carnaval",site:ING+"5527ecbb-76e6-4e2c-b92b-d026895dfc7a/tickets?coupon=B2P"},
@@ -2283,7 +2300,7 @@ const PARCEIROS=[
  {nome:"Camarote Alma",tipo:"Carnario"},{nome:"Camarote N1",tipo:"Carnario"},{nome:"Mequetrefe",tipo:"São Paulo"},{nome:"Astral",tipo:"São Paulo"},
  {nome:"Toma Uma",tipo:"São Paulo"},{nome:"4x4",tipo:"São Paulo"},{nome:"PagoRun",tipo:"São Paulo"},{nome:"Pode Chegar",tipo:"São Paulo"},
  {nome:"Bota Fora",tipo:"São Paulo"},{nome:"Boma",tipo:"Rio"},{nome:"Colosseo",tipo:"Rio"},{nome:"+5521",tipo:"Rio"},{nome:"Pagode do Chuvisco",tipo:"São Paulo"},
-{nome:"Samba do Mel",tipo:"São Paulo"},{nome:"Melhor Eu Ir",tipo:"São Paulo"},{nome:"Corcovado",tipo:"São Paulo"},{nome:"Retronejo",tipo:"São Paulo"},{nome:"Deu Samba",tipo:"São Paulo"},{nome:"Funk Room",tipo:"Carnario"},{nome:"Esbórnia",tipo:"Carnario"},{nome:"Isso Não É Uma Festa",tipo:"Carnario"},{nome:"Delirium",tipo:"São Paulo"}
+{nome:"Samba do Mel",tipo:"São Paulo"},{nome:"Melhor Eu Ir",tipo:"São Paulo"},{nome:"Corcovado",tipo:"São Paulo"},{nome:"Retronejo",tipo:"São Paulo"},{nome:"Deu Samba",tipo:"São Paulo"},{nome:"Corona Surf Skate",tipo:"São Paulo"},{nome:"Funk Room",tipo:"Carnario"},{nome:"Esbórnia",tipo:"Carnario"},{nome:"Isso Não É Uma Festa",tipo:"Carnario"},{nome:"Delirium",tipo:"São Paulo"}
 ];
 /* ============================== */
 
@@ -2349,6 +2366,18 @@ $("#fWhen").addEventListener("click",e=>{const b=e.target.closest(".tab");if(!b)
 /* destino em lista (menos poluído) */
 $("#fDestSel").innerHTML=DESTS.map(([k,v])=>`<option value="${k}">${k==="todos"?L("Todos os destinos","All destinations"):v}</option>`).join("");
 $("#fDestSel").addEventListener("change",e=>{fD=e.target.value;fDia=null;showAll=false;dias();render()});
+/* atalhos: abrir a agenda numa cidade ou numa festa */
+window.B2P_AGENDA=(o={})=>{fW="todas";fDia=null;if(o.dest){fD=o.dest;const sel=$("#fDestSel");if(sel)sel.value=o.dest}showAll=!!o.todos;
+ $("#fWhen").querySelectorAll(".tab").forEach(t=>t.setAttribute("aria-pressed",t.dataset.k===fW));dias();render();
+ const vai=()=>{const el=o.key?document.getElementById("festa-"+o.key):$("#festas");if(el){if(o.key)el.classList.add("hl");el.scrollIntoView({block:o.key?"center":"start"})}};setTimeout(vai,250);setTimeout(vai,800)};
+(function(){const nav=$("#cidades");if(!nav)return;
+ const conta=k=>ATIVAS.filter(f=>f.dest===k&&f.data).length;
+ const cs=DESTS.filter(([k])=>k!=="todos"&&conta(k));
+ nav.innerHTML=`<span class="cid-l">${L("Escolhe sua cidade","Pick your city")}</span>`+cs.map(([k,v])=>`<a href="#agenda" data-dest="${k}">${v}<b>${conta(k)}</b></a>`).join("");
+ nav.addEventListener("click",e=>{const a=e.target.closest("[data-dest]");if(!a)return;const k=a.dataset.dest;setTimeout(()=>window.B2P_AGENDA({dest:k,todos:true}),120)});
+})();
+const abreFesta=()=>{const h=(location.hash||"").slice(1);if(!/^festa-/.test(h))return;const k=h.slice(6);history.replaceState(null,"","#agenda");dispatchEvent(new HashChangeEvent("hashchange"));setTimeout(()=>window.B2P_AGENDA({dest:"todos",todos:true,key:k}),200)};
+addEventListener("hashchange",abreFesta);addEventListener("load",abreFesta);
 const TIPOS_AG=[["todas",L("Todas as festas","All parties")],["universitaria",L("Universitárias","College parties")],["festivais",L("Shows e festivais","Shows & festivals")],["wellness","Wellness"],["reveillon",L("Réveillon","New Year's")],["carnaval",L("Carnaval","Carnival")]];
 function noTipo(f){if(fT==="todas")return true;if(fT==="universitaria")return f.tipo.includes("universitaria")||/blacktag/i.test(f.site||"");if(fT==="festivais")return f.tipo.includes("festivais")||f.tipo.includes("shows");return f.tipo.includes(fT)}
 $("#fTipoSel").innerHTML=TIPOS_AG.map(([k,v])=>`<option value="${k}">${v}</option>`).join("");
@@ -2390,7 +2419,7 @@ function tagFor(f){
 function shareUrl(f){
  let quando="";if(f.data){const d=parse(f.data);quando=String(d.getDate()).padStart(2,"0")+"."+String(d.getMonth()+1).padStart(2,"0")+(f.fim?L(" a "," to ")+f.fim:"")}
  const t=[L("Bora?","Let's go?"),"*"+f.nome+"*"+(quando?" · "+quando:"")+(f.local?" · "+f.local.replace(/^Carnario · /,""):""),
-  f.cupom?L("Cupom B2P: ","B2P code: ")+"*"+f.cupom+"*":"",f.site?L("Ingresso: ","Tickets: ")+f.site:"",L("Achei na Born 2 Party @born2party___","Found it on Born 2 Party @born2party___")].filter(Boolean).join("\n");
+  f.cupom?L("Cupom B2P: ","B2P code: ")+"*"+f.cupom+"*":"",f.site?L("Ingresso: ","Tickets: ")+f.site:"",L("Veja no site: ","See it on the site: ")+"https://born2party.com.br/#festa-"+chave(f),L("Achei na Born 2 Party @born2party___","Found it on Born 2 Party @born2party___")].filter(Boolean).join("\n");
  return"https://wa.me/?text="+encodeURIComponent(t);
 }
 function calUrl(f){
@@ -2407,21 +2436,21 @@ function ticket(f,i){
  if(uni){stub+=`<a class="buy" href="${f.site}" ${ext}>${L("Compre aqui","Buy here")} <span class="arr">→</span></a>`;
   stub+=`<div class="alt"><a class="share" href="${shareUrl(f)}" ${ext}>${L("Mandar pro amigo","Send to a friend")}</a></div>`;
   const k=chave(f);stub+=`<details class="more"><summary>${L("Mais opções","More options")}</summary><div class="alt">${calUrl(f)?`<a class="cal" href="${calUrl(f)}" ${ext}>${L("Salvar na agenda","Add to calendar")}</a>`:""}${f.grupo?`<a href="${f.grupo}" ${ext}>${L("Entrar no grupo","Join the group")}</a>`:""}</div><button type="button" class="vou${VOU.meus.has(k)?" on":""}" data-k="${k}" aria-pressed="${VOU.meus.has(k)}"><span class="vou-l">${VOU.meus.has(k)?L("Confirmado ✓","Going ✓"):L("Eu vou","I'm going")}</span><span class="vou-n">${rotuloVou(k)}</span></button></details>`;
-  return`<article class="ticket"><div class="t-bar scene ${f.cena}" aria-hidden="true"></div><div class="t-head"><div class="t-date">${dateBlock(f)}</div><div class="t-tag">${tagFor(f)}</div></div><div class="t-body"><h3>${f.nome}</h3><p>${f.local}</p></div><div class="t-stub">${stub}</div></article>`}
+  return`<article class="ticket" id="festa-${chave(f)}"><div class="t-bar scene ${f.cena}" aria-hidden="true"></div><div class="t-head"><div class="t-date">${dateBlock(f)}</div><div class="t-tag">${tagFor(f)}</div></div><div class="t-body"><h3>${f.nome}</h3><p>${f.local}</p></div><div class="t-stub">${stub}</div></article>`}
  if(f.cupom){
-  stub+=`<div class="code-row"><div><div class="mono">${L("Cupom B2P","B2P code")}</div><div class="code ${f.cupom===f.cupom.toLowerCase()?"lower":""}">${f.cupom}</div></div>
+  const noLink=/[?&](coupon|cupom|d|cod|passkey|promocao|c|aff|link|afid|v)=/i.test(f.site||"");stub+=`<div class="code-row"><div><div class="mono">${L("Desconto B2P garantido","B2P discount guaranteed")}</div><div class="code ${noLink?"sm":(f.cupom===f.cupom.toLowerCase()?"lower":"")}">${noLink?L("Já aplicado no link","Already in the link"):f.cupom}</div></div>
    <button class="copy" type="button" data-code="${f.cupom}" id="cp-${i}">${L("Copiar cupom","Copy code")}</button></div>`;
  } else if(f.beneficio){
   stub+=`<div class="code-row"><div><div class="mono">${L("Benefício B2P","B2P perk")}</div><div class="code sm">${L(f.beneficio,f.beneficioEn||f.beneficio)}</div></div></div>`;
  } else if(f.linkB2P){
-  stub+=`<div class="code-row"><div><div class="mono">${L("Cupom B2P","B2P code")}</div><div class="code sm">${L("Desconto no link","Discount in link")}</div></div></div>`;
+  stub+=`<div class="code-row"><div><div class="mono">${L("Desconto B2P garantido","B2P discount guaranteed")}</div><div class="code sm">${L("Já aplicado no link","Already in the link")}</div></div></div>`;
  }
  if(f.noites){
   stub+=`<details class="nights"><summary><span>${f.noites.length===1?L("Ver a noite","See the night"):L(`Ver as ${f.noites.length} noites`,`See all ${f.noites.length} nights`)}</span><span class="mono">${L("ingressos por noite","tickets per night")}</span></summary><ul>${
    f.noites.map(([d,n,u])=>`<li><a href="${u}" ${ext}><span class="mono">${d}</span><span>${n}</span><span aria-hidden="true"></span></a></li>`).join("")}</ul></details>`;
  }
  if(f.site){
-  stub+=`<a class="buy" href="${f.site}" ${ext}>${(LANG==="en"&&f.siteEn)?f.siteEn:(f.siteLbl||L("Comprar no site oficial","Buy on the official site"))} <span class="arr">→</span></a>`;
+  stub+=`<a class="buy" href="${f.site}" ${ext}>${(LANG==="en"&&f.siteEn)?f.siteEn:(f.siteLbl||((f.cupom||f.linkB2P)?L("Comprar com desconto","Buy with discount"):L("Comprar no site oficial","Buy on the official site")))} <span class="arr">→</span></a>`;
  } else if(!f.noites && (f.cupom)){
   stub+=`<a class="buy" href="https://www.instagram.com/born2party___/" ${ext}>Pedir o link no Direct <span class="arr">→</span></a>`;
  }
@@ -2440,7 +2469,7 @@ function ticket(f,i){
  stub+=`<div class="alt">${alt.shift()}</div>`;
  const k=chave(f);
  stub+=`<details class="more"><summary>${L("Mais opções","More options")}</summary>${alt.length?`<div class="alt">${alt.join("")}</div>`:""}<button type="button" class="vou${VOU.meus.has(k)?" on":""}" data-k="${k}" aria-pressed="${VOU.meus.has(k)}"><span class="vou-l">${VOU.meus.has(k)?L("Confirmado ✓","Going ✓"):L("Eu vou","I'm going")}</span><span class="vou-n">${rotuloVou(k)}</span></button></details>`;
- return`<article class="ticket">
+ return`<article class="ticket" id="festa-${chave(f)}">
   <div class="t-bar scene ${f.cena}" aria-hidden="true"></div>
   <div class="t-head"><div class="t-date">${dateBlock(f)}</div><div class="t-tag">${tagFor(f)}</div></div>
   <div class="t-body"><h3>${f.nome}</h3><p>${f.local}</p></div>
@@ -2582,14 +2611,14 @@ $("#more").addEventListener("click",e=>{if(e.target.closest("#moreBtn")){showAll
   $("#cInfo").innerHTML=`<h3>${c}<small>${UFN[ufDe(c)]||""}</small></h3>${inf?`<dl><div><dt>${L("Como chegar","Getting there")}</dt><dd>${LANG==="en"&&INFO_EN[c]?INFO_EN[c].c:inf.c}</dd></div><div><dt>${L("Dica B2P","B2P tip")}</dt><dd>${LANG==="en"&&INFO_EN[c]?INFO_EN[c].d:inf.d}</dd></div></dl>`:""}${mu?`<a class="gmaps" href="${mu}" ${ext}><span class="pinico" aria-hidden="true"></span>${L(`Ver ${c} no Google Maps`,`See ${c} on Google Maps`)}</a>`:""}`;
   document.querySelectorAll("#revMap .pin").forEach(p=>p.classList.toggle("sel",p.dataset.c===c));
   document.querySelectorAll("#revMap .st").forEach(s=>s.classList.toggle("on",s.dataset.uf===ufDe(c)));
-  $("#revList").innerHTML=d.f.map(f=>{if(f.noites&&f.noites.length){return`<li class="rl-multi"><div class="rl-h"><strong>${f.nome}</strong><small>${f.local}</small></div><div class="ra-links">${linksDe(f).map(([t,u,pk])=>`<a class="${pk?"pk":""}" href="${u}" ${ext}>${t}</a>`).join("")}</div></li>`}const url=f.site;return`<li><a href="${url}" ${ext}><strong>${f.nome}</strong><small>${f.local}</small><span class="c">${f.cupom?L("Cupom ","Code ")+f.cupom:L("Desconto no link","Discount in link")} →</span></a></li>`}).join("")||`<li><small style="color:var(--muted)">${L("Festas com desconto em breve. Entre no grupo pra saber primeiro.","Discounted parties coming soon. Join the group to hear first.")}</small></li>`;
+  $("#revList").innerHTML=d.f.map(f=>{if(f.noites&&f.noites.length){return`<li class="rl-multi"><div class="rl-h"><strong>${f.nome}</strong><small>${f.local}</small></div><div class="ra-links">${linksDe(f).map(([t,u,pk])=>`<a class="${pk?"pk":""}" href="${u}" ${ext}>${t}</a>`).join("")}</div></li>`}const url=f.site;return`<li><a href="${url}" ${ext}><strong>${f.nome}</strong><small>${f.local}</small><span class="c">${L("Desconto B2P","B2P discount")} →</span></a></li>`}).join("")||`<li><small style="color:var(--muted)">${L("Festas com desconto em breve. Entre no grupo pra saber primeiro.","Discounted parties coming soon. Join the group to hear first.")}</small></li>`;
   $("#revGroups").innerHTML=d.g.map(([n,code])=>`<a class="grp" href="${W}${code}" ${ext}>${n}<span class="go">${L("Entrar","Join")}</span></a>`).join("")||`<a class="grp" href="${W}KHyHRBiWNOq4rH5nc0HiUA" ${ext}>${L("Grupo Réveillon","New Year's group")}<span class="go">${L("Entrar","Join")}</span></a>`;
  }
  (function(){const box=$("#revAll");if(!box)return;
   const dm=iso=>iso?iso.slice(8,10)+"."+iso.slice(5,7):"";
   const cs=ordem.flatMap(u=>nomes.filter(c=>ufDe(c)===u&&CID[c].f.length));
   if(LANG==="en"){$("#raH").textContent="Every New Year's party";$("#raLede").textContent="Each destination with its parties, dates and discount links."}
-  box.innerHTML=cs.map(c=>{const d=CID[c];return`<div class="ra-city"><h4>${c}<small>${UFN[ufDe(c)]||""}</small></h4><ul class="ra-list">${d.f.map(f=>{const quando=dm(f.data)+(f.fim?L(" a "," to ")+f.fim:"");const desc=f.cupom?L("Cupom ","Code ")+f.cupom:L("Desconto já no link","Discount already in the link");return`<li><div class="ra-h"><strong>${f.nome}</strong><span>${quando} · ${desc}</span></div><div class="ra-links">${linksDe(f).map(([t,u,pk])=>`<a class="${pk?"pk":""}" href="${u}" ${ext}>${t}</a>`).join("")}</div></li>`}).join("")}</ul>${d.g.length?`<div class="ra-g">${d.g.map(([n,code])=>`<a href="${W}${code}" ${ext}>${L("Entrar no grupo","Join the group")} ${n}</a>`).join("")}</div>`:""}</div>`}).join("");
+  box.innerHTML=cs.map(c=>{const d=CID[c];return`<div class="ra-city"><h4>${c}<small>${UFN[ufDe(c)]||""}</small></h4><ul class="ra-list">${d.f.map(f=>{const quando=dm(f.data)+(f.fim?L(" a "," to ")+f.fim:"");const desc=L("Desconto B2P garantido","B2P discount guaranteed");return`<li><div class="ra-h"><strong>${f.nome}</strong><span>${quando} · ${desc}</span></div><div class="ra-links">${linksDe(f).map(([t,u,pk])=>`<a class="${pk?"pk":""}" href="${u}" ${ext}>${t}</a>`).join("")}</div></li>`}).join("")}</ul>${d.g.length?`<div class="ra-g">${d.g.map(([n,code])=>`<a href="${W}${code}" ${ext}>${L("Entrar no grupo","Join the group")} ${n}</a>`).join("")}</div>`:""}</div>`}).join("");
  })();
  const inicial=nomes.find(c=>CID[c].f.length)||nomes[0];
  if(inicial){sel.value=inicial;cidade(inicial)}
@@ -2880,7 +2909,7 @@ $("#pcopy").addEventListener("click",e=>copyText(e.currentTarget.dataset.code,e.
   const g=C.grupo?W+C.grupo:"";
   $("#carnAgenda").innerHTML=Object.keys(dias).sort().map(k=>{const d=parse(k),w=DOW[d.getDay()],m=MES[d.getMonth()];
    return`<li><div class="dd"><b>${String(d.getDate()).padStart(2,"0")}</b><span>${L(m[0],m[1])}</span><span>${L(w[0],w[1])}</span></div><ul>${dias[k].map(f=>{
-    const tag=f.pre?`<span class="c pre">${L("Pré-venda ","Presale ")+f.pre}</span>`:`<span class="c">${f.cupom?L("Cupom ","Code ")+f.cupom:L("Desconto no link","Discount link")} →</span>`;
+    const tag=f.pre?`<span class="c pre">${L("Pré-venda ","Presale ")+f.pre}</span>`:`<span class="c">${L("Desconto B2P","B2P discount")} →</span>`;
     const note=f.pre&&f.siteLbl?`<span class="note">${L(f.siteLbl,f.siteEn||f.siteLbl)}</span>`:"";
     return`<li><a href="${f.site}" ${ext}><span class="n">${f.nome}</span>${note}${tag}</a></li>`}).join("")}</ul></li>`}).join("");
   const vazio=!ag.length;
@@ -3185,7 +3214,7 @@ contagem();setInterval(contagem,30000);
   $("#ctCount").innerHTML=falta("2027-02-04").replace(L("dias pra começar","days to go"),L("dias pro Carnaval","days to Carnival")).replace(L("dia pra começar","day to go"),L("dia pro Carnaval","day to Carnival"));
   $("#ctTag").textContent="Rio de Janeiro";
   $("#ctSub").textContent=L("Bailes, blocos e camarotes do Carnaval do Rio, com cupom B2P.","Balls, blocos and VIP boxes at Rio Carnival, with the B2P code.");
-  $("#ctPoster").innerHTML=C.slice(0,8).map((f,i)=>{const d=parse(f.data),u=compraUrl(f);const inn=`<span class="d"><small>${dw(d)}</small>${dd(d)}</span><span class="n">${f.nome}</span><span class="k">${f.camarote?L("Camarote","VIP box"):f.cupom?L("Cupom B2P","B2P code"):f.pre?L("Pré-venda "+f.pre,"Presale "+f.pre):(f.linkB2P&&f.site)?L("Desconto no link","Discount in link"):L("Em breve","Soon")}</span>`;return u?`<li class="lk" style="--i:${i}"><a href="${u}" ${ext}>${inn}</a></li>`:`<li style="--i:${i}">${inn}</li>`}).join("");
+  $("#ctPoster").innerHTML=C.slice(0,8).map((f,i)=>{const d=parse(f.data),u=compraUrl(f);const inn=`<span class="d"><small>${dw(d)}</small>${dd(d)}</span><span class="n">${f.nome}</span><span class="k">${f.camarote?L("Camarote","VIP box"):f.pre?L("Pré-venda "+f.pre,"Presale "+f.pre):(f.cupom||(f.linkB2P&&f.site))?L("Desconto B2P","B2P discount"):L("Em breve","Soon")}</span>`;return u?`<li class="lk" style="--i:${i}"><a href="${u}" ${ext}>${inn}</a></li>`:`<li style="--i:${i}">${inn}</li>`}).join("");
   $("#ctCta").textContent=L(`Ver as ${C.length} festas do Carnario`,`See all ${C.length} Carnario parties`);
   /* outros carnavais: cartões compactos, o Carnario segue como destaque */
   const CI=[["sp",L("Blocos de rua e festas","Street blocos and parties")],["ssa",L("Circuitos, trios e camarotes","Circuits, trios and VIP boxes")],["bh",L("Blocos que tomam a cidade","Blocos taking over the city")],["rosa",L("Carnaval Tantrarosa, de 5 a 8/02, com desconto","Carnaval Tantrarosa, Feb 5–8, discounted")],["caraiva",L("Carnaval na vila: as festas saem primeiro no grupo","Village Carnival: parties drop first in the group")]];
